@@ -326,6 +326,11 @@ export function FoundationsChapter() {
                 <Td className="text-neutral-600">Color and opacity changes</Td>
               </Tr>
               <Tr>
+                <Td className="font-mono text-xs">180ms</Td>
+                <Td className="font-mono text-xs">animate-menu-in</Td>
+                <Td className="text-neutral-600">Nav dropdowns and menus (4px rise + 2% scale)</Td>
+              </Tr>
+              <Tr>
                 <Td className="font-mono text-xs">200–300ms</Td>
                 <Td className="font-mono text-xs">duration-200 / 300</Td>
                 <Td className="text-neutral-600">Modals (200), drawers and panels (300)</Td>

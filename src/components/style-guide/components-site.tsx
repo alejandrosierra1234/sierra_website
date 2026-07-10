@@ -82,21 +82,23 @@ export function ComponentsSiteChapter() {
       <Topic
         id="navigation"
         title="Navigation"
-        lede="A quiet sticky header: wordmark, six destinations, one contact action. Below lg, links move into the drawer."
+        lede="A quiet sticky header: wordmark, a Products disclosure, four destinations, one project CTA. Below lg, everything collapses into the drawer."
       >
-        <Demo tone="bare" label="Live navbar (non-sticky in this demo). Resize to see the mobile drawer trigger.">
+        <Demo tone="bare" label="Live navbar (non-sticky in this demo). Click or hover Products; resize for the mobile drawer.">
           <Navbar sticky={false} />
         </Demo>
         <Guidelines
           usage={[
-            "Maximum six top-level destinations plus one Contact action.",
+            "Products is the only dropdown — it groups the four material categories (Fiber, Yarn, Fabric, Chemicals) that don’t fit as flat links.",
+            "Maximum four flat destinations plus the Products group and one CTA — restraint keeps the bar calm.",
             "The wordmark always returns home; no logo taglines in the bar.",
-            "The bar is 64px tall, paper at 90% opacity with backdrop blur when sticky.",
+            "The bar is 64px tall, paper at 80% opacity with backdrop blur when sticky.",
           ]}
           a11y={[
+            "Products follows the disclosure pattern (aria-expanded/aria-controls), not role=menu — its panel is plain nav content reachable by Tab.",
+            "Opens on click (works for touch and keyboard) with a hover-intent assist for pointer users; Escape closes and returns focus to the trigger.",
             "Landmarks: <header> with <nav aria-label='Main'>; drawer nav is labeled 'Mobile'.",
-            "The menu button carries aria-label and a 40px target.",
-            "Focus order matches visual order; the drawer traps focus while open.",
+            "The menu button carries aria-label and a 40px target; focus order matches visual order.",
           ]}
         />
       </Topic>

@@ -138,6 +138,7 @@ export const motionTokens = [
   { token: "--ease-precise", value: "cubic-bezier(0.2, 0, 0, 1)", use: "Default. Entrances, hovers, layout shifts." },
   { token: "--ease-exit", value: "cubic-bezier(0.4, 0, 1, 1)", use: "Exits and dismissals" },
   { token: "duration-150", value: "150ms", use: "Hovers, color changes" },
+  { token: "animate-menu-in", value: "180ms", use: "Nav dropdowns and menus (4px rise + 2% scale)" },
   { token: "duration-200", value: "200ms", use: "Small movement (modals)" },
   { token: "duration-300", value: "300ms", use: "Drawers, panels" },
   { token: "duration-500", value: "500ms", use: "Page-level reveals" },
