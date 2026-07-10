@@ -163,35 +163,63 @@ export function Navbar({
         </AnimatePresence>
       </div>
 
-      <Drawer open={menuOpen} onClose={() => setMenuOpen(false)} title="Menu">
-        <div className="space-y-4">
-          <button
-            type="button"
-            onClick={() => {
-              setSearchOpen(true);
-              setMenuOpen(false);
-            }}
-            className="flex w-full items-center gap-2 rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-2 text-sm text-neutral-500 transition-colors duration-150 hover:bg-neutral-100 hover:border-neutral-300"
+      {/* Full-screen mobile menu modal */}
+      {menuOpen && (
+        <div
+          className="fixed inset-0 z-50 bg-paper lg:hidden"
+          onClick={() => setMenuOpen(false)}
+        >
+          <div
+            className="flex h-full flex-col"
+            onClick={(e) => e.stopPropagation()}
           >
-            <Search aria-hidden className="size-4" />
-            <span>Search…</span>
-            <span className="ml-auto text-xs font-medium">⌘K</span>
-          </button>
+            {/* Header with close and search */}
+            <div className="sticky top-0 z-50 border-b border-neutral-100 bg-paper px-6 py-4">
+              <div className="flex items-center justify-between gap-4">
+                <h2 className="text-lg font-semibold">Menu</h2>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSearchOpen(true);
+                      setMenuOpen(false);
+                    }}
+                    className="rounded-full p-2 text-neutral-500 hover:bg-neutral-100 hover:text-ink transition-colors duration-150"
+                    aria-label="Search"
+                  >
+                    <Search aria-hidden className="size-5" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setMenuOpen(false)}
+                    className="rounded-full p-2 text-neutral-500 hover:bg-neutral-100 hover:text-ink transition-colors duration-150"
+                    aria-label="Close menu"
+                  >
+                    <svg aria-hidden className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
 
-          <div className="-mx-6 px-6">
-            <MobileMenu items={items} onNavigate={() => setMenuOpen(false)} />
-          </div>
+            {/* Scrollable content */}
+            <div className="flex-1 overflow-y-auto px-6 py-8">
+              <MobileMenu items={items} onNavigate={() => setMenuOpen(false)} />
+            </div>
 
-          <div className="flex flex-col gap-3 pt-4 border-t border-neutral-100">
-            <Button href="#" className="w-full">
-              Request a Meeting
-            </Button>
-            <Button href="#" variant="secondary" className="w-full">
-              Contact
-            </Button>
+            {/* Footer CTAs */}
+            <div className="border-t border-neutral-100 bg-paper px-6 py-6 space-y-3">
+              <Button href="#" className="w-full">
+                Request a Meeting
+              </Button>
+              <Button href="#" variant="secondary" className="w-full">
+                Contact
+              </Button>
+            </div>
           </div>
         </div>
-      </Drawer>
+      )}
 
       <SpotlightSearch open={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
