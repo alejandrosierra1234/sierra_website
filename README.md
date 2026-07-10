@@ -27,7 +27,7 @@ It is the single source of truth for every design and development decision:
 
 - [Next.js](https://nextjs.org) (App Router) + React + TypeScript
 - [Tailwind CSS v4](https://tailwindcss.com) — tokens as CSS variables via `@theme`
-- Replica (headings) + Aeonik (body/UI), self-hosted brand typefaces / Geist Mono, Lucide icons
+- Replica (headings) + Aeonik (body/UI) + Replica Mono (technical), all self-hosted brand typefaces / Lucide icons
 
 ## Structure
 

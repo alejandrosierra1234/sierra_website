@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 
-// SIERRA brand typography — two families, fixed roles (see /style-guide):
-//   Replica → display & headings (--font-display)
-//   Aeonik  → body & UI text (--font-sans)
-//   Geist Mono → technical content (--font-mono)
-// Only approved weights ship; the full families live in src/fonts.
+// SIERRA brand typography — three families, all our own (see /style-guide):
+//   Replica      → display & headings (--font-display)
+//   Aeonik       → body & UI text (--font-sans)
+//   Replica Mono → technical content: specs, figures, eyebrows (--font-mono)
+// No third-party typefaces. Only approved cuts ship; full families live in
+// src/fonts.
 
 const replica = localFont({
   src: [
@@ -35,6 +35,15 @@ const aeonik = localFont({
   display: "swap",
 });
 
+// Replica Mono ships a single Regular cut; declare it across the 400–500
+// range so mono labels at font-medium render in the real face (at its
+// natural weight) rather than a synthesized bold.
+const replicaMono = localFont({
+  src: [{ path: "../fonts/ReplicaMonoLL-Regular.otf", weight: "400 500", style: "normal" }],
+  variable: "--font-replica-mono",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: {
     default: "SIERRA — Vertical Textile Manufacturing",
@@ -50,7 +59,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${replica.variable} ${aeonik.variable} ${GeistMono.variable}`}
+      className={`${replica.variable} ${aeonik.variable} ${replicaMono.variable}`}
     >
       <body>{children}</body>
     </html>

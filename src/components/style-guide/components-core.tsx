@@ -6,20 +6,77 @@ import { Chapter, Topic, Demo, Guidelines } from "./doc";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Field, Input, Textarea, Select, Checkbox } from "@/components/ui/input";
+import { Field, Input, Textarea, Checkbox } from "@/components/ui/input";
+import { Select } from "@/components/ui/select";
 import { Table, THead, TBody, Tr, Th, Td } from "@/components/ui/table";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Accordion } from "@/components/ui/accordion";
 import { Pagination } from "@/components/ui/pagination";
 import { SearchDemo } from "@/components/ui/search";
 
+const industries = [
+  { value: "apparel", label: "Apparel" },
+  { value: "workwear", label: "Workwear" },
+  { value: "home", label: "Home Textiles" },
+  { value: "automotive", label: "Automotive" },
+  { value: "medical", label: "Medical" },
+];
+
 function PaginationDemo() {
   const [page, setPage] = useState(4);
   return <Pagination page={page} totalPages={12} onPageChange={setPage} />;
 }
 
+function SelectDemo() {
+  const [value, setValue] = useState("");
+  const [disabled] = useState("workwear");
+  return (
+    <div className="grid max-w-xl gap-5">
+      <Field label="Industry" htmlFor="sel-default" hint="Custom listbox — never the OS dropdown.">
+        <Select
+          id="sel-default"
+          value={value}
+          onValueChange={setValue}
+          options={industries}
+          placeholder="Select an industry"
+        />
+      </Field>
+      <div className="grid gap-5 sm:grid-cols-2">
+        <Field label="Error state" htmlFor="sel-error" error="Choose an industry to continue.">
+          <Select id="sel-error" value="" onValueChange={() => {}} options={industries} placeholder="Required" invalid />
+        </Field>
+        <Field label="Disabled" htmlFor="sel-disabled">
+          <Select id="sel-disabled" value={disabled} onValueChange={() => {}} options={industries} disabled />
+        </Field>
+      </div>
+    </div>
+  );
+}
+
+function CheckboxDemo() {
+  const [checks, setChecks] = useState({ a: true, b: false });
+  return (
+    <div className="flex flex-col gap-3">
+      <Checkbox
+        id="cb-a"
+        label="OEKO-TEX® Standard 100"
+        checked={checks.a}
+        onChange={(e) => setChecks((c) => ({ ...c, a: e.target.checked }))}
+      />
+      <Checkbox
+        id="cb-b"
+        label="Global Recycled Standard (GRS)"
+        checked={checks.b}
+        onChange={(e) => setChecks((c) => ({ ...c, b: e.target.checked }))}
+      />
+      <Checkbox id="cb-c" label="Disabled option" disabled />
+    </div>
+  );
+}
+
 function FormDemo() {
   const [submitted, setSubmitted] = useState(false);
+  const [industry, setIndustry] = useState("");
   return (
     <form
       className="grid max-w-xl gap-5"
@@ -37,16 +94,13 @@ function FormDemo() {
         </Field>
       </div>
       <Field label="Industry" htmlFor="form-industry">
-        <Select id="form-industry" name="industry" defaultValue="">
-          <option value="" disabled>
-            Select an industry
-          </option>
-          <option>Apparel</option>
-          <option>Workwear</option>
-          <option>Home Textiles</option>
-          <option>Automotive</option>
-          <option>Medical</option>
-        </Select>
+        <Select
+          id="form-industry"
+          value={industry}
+          onValueChange={setIndustry}
+          options={industries}
+          placeholder="Select an industry"
+        />
       </Field>
       <Field label="Project details" htmlFor="form-details" hint="Volumes, timeline, target specs — anything helps.">
         <Textarea id="form-details" name="details" aria-describedby="form-details-hint" />
@@ -124,7 +178,7 @@ export function ComponentsCoreChapter() {
       <Topic
         id="inputs"
         title="Inputs"
-        lede="Text inputs, textareas and selects share one control style: 44px height, md radius, quiet border, visible label above."
+        lede="Text inputs and textareas share one control style: 44px height, md radius, quiet border, visible label above. The custom select matches it exactly."
       >
         <Demo label="Default, hint, error, and disabled states.">
           <div className="grid max-w-xl gap-5">
@@ -154,6 +208,33 @@ export function ComponentsCoreChapter() {
             "Errors set aria-invalid and are linked with aria-describedby.",
             "Focus replaces the border with the 2px teal-700 outline — always visible.",
             "Autocomplete attributes on all identity fields.",
+          ]}
+        />
+      </Topic>
+
+      <Topic
+        id="select"
+        title="Select & checkbox"
+        lede="Both controls are built from scratch — never the operating system’s dropdown or checkbox — so they look identical on every platform and match the system exactly."
+      >
+        <Demo label="Custom listbox select: default, error and disabled.">
+          <SelectDemo />
+        </Demo>
+        <Demo label="Custom checkbox — real input, drawn control.">
+          <CheckboxDemo />
+        </Demo>
+        <Guidelines
+          usage={[
+            "Select is for one choice from a known list; multi-select uses checkboxes.",
+            "The menu opens downward, matches the trigger width, and scrolls past ~8 options.",
+            "The selected option is marked with a teal check; the trigger shows its label.",
+            "Checkboxes stack vertically with a generous 10px gap to the label.",
+          ]}
+          a11y={[
+            "Select follows the WAI-ARIA listbox pattern: combobox button + owned listbox.",
+            "Keyboard: ↑/↓ move, Enter/Space select, Esc closes, Home/End jump, Tab exits.",
+            "The checkbox is a real <input>; only its visuals are custom — full keyboard and SR support.",
+            "Both take the 2px teal-700 focus ring and pair state with an icon, not color alone.",
           ]}
         />
       </Topic>

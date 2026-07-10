@@ -84,7 +84,7 @@ export const semanticColors: ColorToken[] = [
   { name: "warning", value: "#7A6400", usage: "Caution, limited (AA-safe yellow-700)" },
   { name: "danger", value: "#B40B0B", usage: "Errors, destructive actions (brand red-700)" },
   { name: "info", value: "#004A86", usage: "Informational status (brand blue-700)" },
-  { name: "mark", value: "#59A29E", usage: "Logo isotype only — never UI" },
+  { name: "mark", value: "#0BA496", usage: "Logo isotype (matches teal-600) — never UI" },
 ];
 
 export const typeScale = [

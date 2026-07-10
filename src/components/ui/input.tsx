@@ -1,4 +1,4 @@
-import { ChevronDown } from "lucide-react";
+import { Check } from "lucide-react";
 import { cn } from "@/lib/cn";
 
 /**
@@ -84,29 +84,11 @@ export function Textarea({
   );
 }
 
-export function Select({
-  className,
-  invalid,
-  children,
-  ...props
-}: React.SelectHTMLAttributes<HTMLSelectElement> & { invalid?: boolean }) {
-  return (
-    <div className="relative">
-      <select
-        {...props}
-        aria-invalid={invalid || undefined}
-        className={cn(controlBase, "h-11 appearance-none pr-9 pl-3.5", className)}
-      >
-        {children}
-      </select>
-      <ChevronDown
-        aria-hidden
-        className="pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2 text-neutral-500"
-      />
-    </div>
-  );
-}
-
+/**
+ * Checkbox with a fully custom control — never the native OS box. The real
+ * <input> stays (form-native, keyboard- and screen-reader-accessible) but
+ * is visually hidden; the box and check are drawn with peer utilities.
+ */
 export function Checkbox({
   label,
   className,
@@ -115,12 +97,19 @@ export function Checkbox({
 }: React.InputHTMLAttributes<HTMLInputElement> & { label: string }) {
   return (
     <label htmlFor={id} className={cn("flex items-start gap-2.5 text-sm text-ink", className)}>
-      <input
-        type="checkbox"
-        id={id}
-        {...props}
-        className="mt-0.5 size-4 shrink-0 rounded-xs border-neutral-300 accent-teal-700"
-      />
+      <span className="relative mt-0.5 inline-flex shrink-0">
+        <input
+          type="checkbox"
+          id={id}
+          {...props}
+          className="peer size-[18px] shrink-0 cursor-pointer appearance-none rounded-xs border border-neutral-300 bg-surface transition-colors duration-150 ease-precise checked:border-teal-700 checked:bg-teal-700 hover:border-neutral-400 checked:hover:bg-teal-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 disabled:cursor-not-allowed disabled:bg-neutral-100"
+        />
+        <Check
+          aria-hidden
+          strokeWidth={3}
+          className="pointer-events-none absolute inset-0 m-auto size-3 scale-50 text-paper opacity-0 transition-all duration-150 ease-precise peer-checked:scale-100 peer-checked:opacity-100"
+        />
+      </span>
       <span>{label}</span>
     </label>
   );

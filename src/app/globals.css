@@ -48,7 +48,7 @@
   --color-teal-900: #08403c;
 
   /* ---- Color · Brand mark (logo isotype only) ---- */
-  --color-mark: #59a29e;
+  --color-mark: #0ba496;
 
   /* ---- Color · Extended palette (charts, categories, illustration) ---- */
   --color-green-100: #d1ffbe; /* brand */
@@ -83,7 +83,7 @@
   /* ---- Typography ---- */
   --font-sans: var(--font-aeonik), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-replica), var(--font-aeonik), ui-sans-serif, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", monospace;
+  --font-mono: var(--font-replica-mono), ui-monospace, "SF Mono", monospace;
 
   --text-display: clamp(2.75rem, 2rem + 3vw, 4.25rem);
   --text-display--line-height: 1.02;

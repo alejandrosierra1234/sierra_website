@@ -105,15 +105,15 @@ export function FoundationsChapter() {
           the brand teal — carries accents on dark surfaces and large graphic moments.
           Mid-scale brights (teal-500, green-500, red-500…) are never used for small text.
           Restraint is the discipline: most screens are white, gray and ink, with one accent
-          moment. The logo teal (<strong className="text-ink">mark #59A29E</strong>) belongs to
-          the isotype alone.
+          moment. The logo teal (<strong className="text-ink">mark #0BA496</strong>, matching
+          teal-600) belongs to the isotype alone.
         </p>
       </Topic>
 
       <Topic
         id="typography"
         title="Typography"
-        lede="Three families with fixed roles: Replica for display and headings, Aeonik for body and UI, Geist Mono for everything technical — specs, figures, labels, code."
+        lede="Three families with fixed roles, all SIERRA’s own: Replica for display and headings, Aeonik for body and UI, Replica Mono for everything technical — specs, figures, labels, code."
       >
         <Demo tone="bare">
           <div className="flex flex-col divide-y divide-neutral-100">
@@ -136,7 +136,7 @@ export function FoundationsChapter() {
             ))}
           </div>
         </Demo>
-        <Demo label="Technical figures always use Geist Mono with tabular numerals.">
+        <Demo label="Technical figures always use Replica Mono with tabular numerals.">
           <div className="flex flex-wrap gap-10 font-mono tabular-nums">
             <div>
               <p className="text-3xl font-medium tracking-tight">240<span className="text-neutral-400">gsm</span></p>

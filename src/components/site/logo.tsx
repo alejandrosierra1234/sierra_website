@@ -2,7 +2,7 @@ import { cn } from "@/lib/cn";
 
 /**
  * SIERRA logo (from SIERRA_Primary_Blue02.svg). The isotype is always
- * brand mark teal (#59a29e); the wordmark is ink on light surfaces and
+ * brand mark teal (#0ba496, = teal-600); the wordmark is ink on light surfaces and
  * paper on dark ones. Never recolor, stretch, or restyle these paths.
  */
 

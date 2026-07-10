@@ -104,7 +104,7 @@ export function TokensChapter() {
             </Tr>
             <Tr>
               <Td className="font-mono text-xs">--font-mono</Td>
-              <Td className="font-mono text-xs">Geist Mono, ui-monospace</Td>
+              <Td className="font-mono text-xs">Replica Mono, ui-monospace</Td>
               <Td className="text-neutral-600">Specs, figures, eyebrows, labels</Td>
             </Tr>
             <Tr>
