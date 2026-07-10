@@ -166,15 +166,15 @@ export function Navbar({
       {/* Full-screen mobile menu modal */}
       {menuOpen && (
         <div
-          className="fixed inset-0 z-50 bg-paper lg:hidden"
+          className="fixed inset-0 top-0 left-0 right-0 bottom-0 z-50 bg-paper lg:hidden flex flex-col"
           onClick={() => setMenuOpen(false)}
         >
           <div
-            className="flex h-full flex-col"
+            className="flex flex-col h-screen w-screen"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header with close and search */}
-            <div className="sticky top-0 z-50 border-b border-neutral-100 bg-paper px-6 py-4">
+            <div className="shrink-0 border-b border-neutral-100 bg-paper px-6 py-4">
               <div className="flex items-center justify-between gap-4">
                 <h2 className="text-lg font-semibold">Menu</h2>
                 <div className="flex items-center gap-2">
@@ -204,12 +204,12 @@ export function Navbar({
             </div>
 
             {/* Scrollable content */}
-            <div className="flex-1 overflow-y-auto px-6 py-8">
+            <div className="min-h-0 flex-1 overflow-y-auto px-6 py-8">
               <MobileMenu items={items} onNavigate={() => setMenuOpen(false)} />
             </div>
 
             {/* Footer CTAs */}
-            <div className="border-t border-neutral-100 bg-paper px-6 py-6 space-y-3">
+            <div className="shrink-0 border-t border-neutral-100 bg-paper px-6 py-6 space-y-3">
               <Button href="#" className="w-full">
                 Request a Meeting
               </Button>
