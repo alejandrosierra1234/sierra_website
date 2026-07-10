@@ -50,5 +50,12 @@ src/
 ```bash
 npm install
 npm run dev    # http://localhost:3000 → redirects to /style-guide
-npm run build
+npm run build  # static export to out/
 ```
+
+## Deployment
+
+Every push to the active branch runs `.github/workflows/deploy.yml`, which
+builds the static export and publishes it to GitHub Pages:
+
+**https://alejandrosierra1234.github.io/sierra_website/**
