@@ -3,9 +3,8 @@
 import { useEffect, useId, useRef, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence } from "framer-motion";
-import { Menu, Search } from "lucide-react";
+import { Menu, Search, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Drawer } from "@/components/ui/drawer";
 import { Logo } from "@/components/site/logo";
 import { MegaMenu } from "@/components/site/mega-menu";
 import { MobileMenu } from "@/components/site/mobile-menu";
@@ -75,6 +74,28 @@ export function Navbar({
     return () => document.removeEventListener("keydown", onKey);
   }, [enableShortcuts]);
 
+  // Close mobile menu on Escape
+  useEffect(() => {
+    if (!menuOpen) return;
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        setMenuOpen(false);
+      }
+    }
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = "";
+      };
+    }
+  }, [menuOpen]);
+
   const activeItem = items.find((item) => item.key === activeKey) ?? null;
 
   return (
@@ -82,13 +103,8 @@ export function Navbar({
       ref={headerRef}
       className={cn(
         "w-full border-b border-neutral-100 bg-paper/80 backdrop-blur-md",
-        sticky ? "sticky top-0 z-(--z-nav)" : "relative",
+        sticky ? "sticky top-0 z-40" : "relative",
       )}
-      // The whole header — trigger row, CTAs and the panel drop-zone — is
-      // one hover/focus region. Leaving it closes any open mega menu
-      // immediately; hovering elsewhere inside it (e.g. the CTA buttons)
-      // simply keeps the last-opened menu visible, matching the "close
-      // immediately on pointer leave" spec without a hover-intent delay.
       onMouseLeave={close}
       onBlur={(e) => {
         if (!headerRef.current?.contains(e.relatedTarget as Node)) close();
@@ -97,6 +113,7 @@ export function Navbar({
       <div className="mx-auto flex h-[72px] max-w-[1440px] items-center justify-between gap-6 px-6 lg:px-8">
         <Wordmark />
 
+        {/* Desktop Navigation */}
         <nav aria-label="Main" className="hidden lg:block">
           <ul className="flex items-center gap-1">
             {items.map((item) => (
@@ -122,6 +139,7 @@ export function Navbar({
           </ul>
         </nav>
 
+        {/* Desktop CTA Section */}
         <div className="flex items-center gap-1">
           <button
             type="button"
@@ -152,10 +170,8 @@ export function Navbar({
         </div>
       </div>
 
-      {/* Panel drop-zone: one shared, centered overlay below the whole
-          header. Content swaps per active item; only ever mounted on
-          desktop — mobile uses MobileMenu's accordion instead. */}
-      <div className="absolute inset-x-0 top-full z-(--z-nav) hidden justify-center lg:flex">
+      {/* Desktop Mega Menu Panel */}
+      <div className="absolute inset-x-0 top-full z-40 hidden justify-center lg:flex">
         <AnimatePresence>
           {activeItem && (
             <MegaMenu key={activeItem.key} id={`${navId}-panel`} data={activeItem} onNavigate={close} />
@@ -163,52 +179,42 @@ export function Navbar({
         </AnimatePresence>
       </div>
 
-      {/* Full-screen mobile menu modal */}
+      {/* Mobile Full-Screen Menu Modal */}
       {menuOpen && (
-        <div
-          className="fixed inset-0 top-0 left-0 right-0 bottom-0 z-50 bg-paper lg:hidden flex flex-col"
-          onClick={() => setMenuOpen(false)}
-        >
+        <>
+          {/* Backdrop - solid, blocks all interaction */}
           <div
-            className="flex flex-col h-screen w-screen"
-            onClick={(e) => e.stopPropagation()}
+            className="fixed inset-0 z-40 bg-paper lg:hidden"
+            onClick={() => setMenuOpen(false)}
+            aria-hidden="true"
+          />
+
+          {/* Menu Container */}
+          <div
+            className="fixed inset-0 z-50 flex flex-col lg:hidden overflow-hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile menu"
           >
-            {/* Header with close and search */}
-            <div className="shrink-0 border-b border-neutral-100 bg-paper px-6 py-4">
-              <div className="flex items-center justify-between gap-4">
-                <h2 className="text-lg font-semibold">Menu</h2>
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setSearchOpen(true);
-                      setMenuOpen(false);
-                    }}
-                    className="rounded-full p-2 text-neutral-500 hover:bg-neutral-100 hover:text-ink transition-colors duration-150"
-                    aria-label="Search"
-                  >
-                    <Search aria-hidden className="size-5" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setMenuOpen(false)}
-                    className="rounded-full p-2 text-neutral-500 hover:bg-neutral-100 hover:text-ink transition-colors duration-150"
-                    aria-label="Close menu"
-                  >
-                    <svg aria-hidden className="size-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
+            {/* Header: fixed at top */}
+            <div className="flex shrink-0 items-center justify-between border-b border-neutral-100 bg-paper px-6 py-4">
+              <h2 className="text-lg font-semibold text-ink">Menu</h2>
+              <button
+                type="button"
+                onClick={() => setMenuOpen(false)}
+                className="rounded-full p-2 text-neutral-600 transition-colors duration-150 active:bg-neutral-100"
+                aria-label="Close menu"
+              >
+                <X aria-hidden className="size-5" />
+              </button>
             </div>
 
-            {/* Scrollable content */}
-            <div className="min-h-0 flex-1 overflow-y-auto px-6 py-8">
+            {/* Content: scrollable */}
+            <div className="min-h-0 flex-1 overflow-y-auto">
               <MobileMenu items={items} onNavigate={() => setMenuOpen(false)} />
             </div>
 
-            {/* Footer CTAs */}
+            {/* Footer: fixed at bottom */}
             <div className="shrink-0 border-t border-neutral-100 bg-paper px-6 py-6 space-y-3">
               <Button href="#" className="w-full">
                 Request a Meeting
@@ -218,9 +224,10 @@ export function Navbar({
               </Button>
             </div>
           </div>
-        </div>
+        </>
       )}
 
+      {/* Spotlight Search */}
       <SpotlightSearch open={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   );
