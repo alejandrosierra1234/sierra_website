@@ -164,14 +164,32 @@ export function Navbar({
       </div>
 
       <Drawer open={menuOpen} onClose={() => setMenuOpen(false)} title="Menu">
-        <MobileMenu items={items} onNavigate={() => setMenuOpen(false)} />
-        <div className="mt-6 flex flex-col gap-3">
-          <Button href="#" className="w-full">
-            Request a Meeting
-          </Button>
-          <Button href="#" variant="secondary" className="w-full">
-            Contact
-          </Button>
+        <div className="space-y-4">
+          <button
+            type="button"
+            onClick={() => {
+              setSearchOpen(true);
+              setMenuOpen(false);
+            }}
+            className="flex w-full items-center gap-2 rounded-lg border border-neutral-200 bg-neutral-50 px-3 py-2 text-sm text-neutral-500 transition-colors duration-150 hover:bg-neutral-100 hover:border-neutral-300"
+          >
+            <Search aria-hidden className="size-4" />
+            <span>Search…</span>
+            <span className="ml-auto text-xs font-medium">⌘K</span>
+          </button>
+
+          <div className="-mx-6 px-6">
+            <MobileMenu items={items} onNavigate={() => setMenuOpen(false)} />
+          </div>
+
+          <div className="flex flex-col gap-3 pt-4 border-t border-neutral-100">
+            <Button href="#" className="w-full">
+              Request a Meeting
+            </Button>
+            <Button href="#" variant="secondary" className="w-full">
+              Contact
+            </Button>
+          </div>
         </div>
       </Drawer>
 
