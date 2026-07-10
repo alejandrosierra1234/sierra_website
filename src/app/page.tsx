@@ -18,7 +18,7 @@ export default function Home() {
     <main className="container-page py-24">
       <p className="text-sm text-neutral-600">
         Redirecting to the{" "}
-        <Link href="/style-guide" className="font-medium text-clay-700 underline underline-offset-4">
+        <Link href="/style-guide" className="font-medium text-teal-800 underline underline-offset-4">
           SIERRA Design System
         </Link>
         …

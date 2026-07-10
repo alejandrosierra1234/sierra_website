@@ -4,47 +4,62 @@
  * Mirrors the values declared in `src/app/globals.css` (@theme) so the
  * Style Guide can render token documentation from data. If a value changes
  * in globals.css, it must change here in the same commit.
+ *
+ * Values marked (brand) are verbatim from the SIERRA palette; the rest
+ * are derived steps that complete each scale.
  */
 
 export type ColorToken = { name: string; value: string; usage: string };
 
 export const surfaceColors: ColorToken[] = [
-  { name: "paper", value: "#FBFAF8", usage: "Page background. The default canvas." },
-  { name: "surface", value: "#FFFFFF", usage: "Cards, inputs, raised surfaces." },
-  { name: "ink", value: "#161513", usage: "Primary text, dark sections, primary buttons." },
+  { name: "paper", value: "#FFFFFF", usage: "Page background. The default canvas. (brand)" },
+  { name: "surface", value: "#FFFFFF", usage: "Cards, inputs, raised surfaces. (brand)" },
+  { name: "ink", value: "#0B0B0B", usage: "Primary text, dark surfaces, primary buttons. (brand)" },
 ];
 
 export const neutralColors: ColorToken[] = [
-  { name: "neutral-50", value: "#F6F5F2", usage: "Subtle fills, muted section backgrounds" },
-  { name: "neutral-100", value: "#ECEAE5", usage: "Hover fills, dividers on dark surfaces" },
-  { name: "neutral-200", value: "#DDD9D2", usage: "Borders, hairlines" },
-  { name: "neutral-300", value: "#C4BFB5", usage: "Strong borders, disabled outlines" },
-  { name: "neutral-400", value: "#A39D91", usage: "Placeholder text, disabled icons" },
-  { name: "neutral-500", value: "#857F73", usage: "Tertiary text on dark, metadata" },
-  { name: "neutral-600", value: "#68635A", usage: "Secondary text (min. body gray on paper)" },
-  { name: "neutral-700", value: "#504C45", usage: "Strong secondary text" },
-  { name: "neutral-800", value: "#383530", usage: "Dark hover states" },
-  { name: "neutral-900", value: "#23211D", usage: "Dark surfaces, footer" },
-  { name: "neutral-950", value: "#161513", usage: "Alias of ink" },
+  { name: "neutral-50", value: "#FAFAFA", usage: "Subtle fills, muted section backgrounds" },
+  { name: "neutral-100", value: "#F5F5F5", usage: "Hover fills, muted sections (brand)" },
+  { name: "neutral-200", value: "#E5E5E5", usage: "Borders, hairlines (brand)" },
+  { name: "neutral-300", value: "#D4D4D4", usage: "Strong borders, disabled outlines" },
+  { name: "neutral-400", value: "#A4A4A4", usage: "Placeholder text, disabled icons (brand)" },
+  { name: "neutral-500", value: "#737373", usage: "Tertiary text on dark, metadata" },
+  { name: "neutral-600", value: "#565656", usage: "Secondary text (min. body gray on paper)" },
+  { name: "neutral-700", value: "#444444", usage: "Strong secondary text (brand)" },
+  { name: "neutral-800", value: "#2B2B2B", usage: "Dark hover states (brand)" },
+  { name: "neutral-900", value: "#171717", usage: "Dark surfaces, footer" },
+  { name: "neutral-950", value: "#0B0B0B", usage: "Alias of ink (brand)" },
 ];
 
-export const clayColors: ColorToken[] = [
-  { name: "clay-50", value: "#FBF3EF", usage: "Accent tint backgrounds" },
-  { name: "clay-100", value: "#F5E2D8", usage: "Accent badges, selected fills" },
-  { name: "clay-200", value: "#EAC3B0", usage: "Selection color, decorative" },
-  { name: "clay-300", value: "#DC9F82", usage: "Accent on dark surfaces (links, icons)" },
-  { name: "clay-400", value: "#CB7A54", usage: "Charts, decorative accents" },
-  { name: "clay-500", value: "#B45E36", usage: "Large accent elements on dark" },
-  { name: "clay-600", value: "#9A4B28", usage: "Links, focus ring, primary accent on paper" },
-  { name: "clay-700", value: "#7C3C21", usage: "Link hover, active accent" },
-  { name: "clay-800", value: "#5E2E1A", usage: "Deep accent, pressed states" },
-  { name: "clay-900", value: "#402014", usage: "Accent text on tint backgrounds" },
+export const tealColors: ColorToken[] = [
+  { name: "teal-50", value: "#E8FFFD", usage: "Accent tint backgrounds" },
+  { name: "teal-100", value: "#CFFFFB", usage: "Selection, accent badges (brand)" },
+  { name: "teal-200", value: "#9FF2EA", usage: "Decorative accents" },
+  { name: "teal-300", value: "#67E2D6", usage: "Charts, illustration" },
+  { name: "teal-400", value: "#38D8C9", usage: "Large accents on dark surfaces" },
+  { name: "teal-500", value: "#16CDBE", usage: "Primary accent on dark; hero moments (brand)" },
+  { name: "teal-600", value: "#0BA496", usage: "Large accent elements on light (≥ 3:1 only)" },
+  { name: "teal-700", value: "#007D73", usage: "Links, focus ring, accent text on light (brand)" },
+  { name: "teal-800", value: "#055E57", usage: "Link hover, pressed accents" },
+  { name: "teal-900", value: "#08403C", usage: "Accent text on tint backgrounds" },
+];
+
+export const extendedColors: ColorToken[] = [
+  { name: "green-100 / 500 / 700", value: "#D1FFBE · #3ED600 · #2A9200", usage: "Success family, charts (brand)" },
+  { name: "blue-100 / 500 / 700", value: "#C5E9FF · #009FFF · #004A86", usage: "Info family, charts (brand)" },
+  { name: "purple-100 / 500 / 700", value: "#F6D8FF · #9E00CB · #670084", usage: "Charts, category coding (brand)" },
+  { name: "yellow-100 / 500 / 700", value: "#FFF0AF · #FFC529 · #BB9800", usage: "Warning family, charts (brand)" },
+  { name: "orange-100 / 500 / 700", value: "#FFE3D2 · #FF7824 · #CD4F00", usage: "Charts, category coding (brand)" },
+  { name: "red-100 / 500 / 700", value: "#FFC7C7 · #E80000 · #B40B0B", usage: "Danger family (brand)" },
+  { name: "lime-100 / 500 / 700", value: "#EFEFAF · #C4C412 · #827E00", usage: "Charts, category coding (brand)" },
 ];
 
 export const semanticColors: ColorToken[] = [
-  { name: "success", value: "#2E6B4F", usage: "Confirmation, in-stock, certified" },
-  { name: "warning", value: "#8A5B12", usage: "Caution, limited availability" },
-  { name: "danger", value: "#A03232", usage: "Errors, destructive actions" },
+  { name: "success", value: "#257F08", usage: "Confirmation, in-stock (AA-safe green-700)" },
+  { name: "warning", value: "#7A6400", usage: "Caution, limited (AA-safe yellow-700)" },
+  { name: "danger", value: "#B40B0B", usage: "Errors, destructive actions (brand red-700)" },
+  { name: "info", value: "#004A86", usage: "Informational status (brand blue-700)" },
+  { name: "mark", value: "#59A29E", usage: "Logo isotype only — never UI" },
 ];
 
 export const typeScale = [
@@ -81,10 +96,10 @@ export const radiusScale = [
 ];
 
 export const shadowScale = [
-  { token: "shadow-e1", value: "0 1px 2px rgb(22 21 19 / 0.06)", use: "Resting cards, inputs" },
-  { token: "shadow-e2", value: "0 2px 8px rgb(22 21 19 / 0.08)", use: "Hovered cards, sticky nav" },
-  { token: "shadow-e3", value: "0 8px 24px rgb(22 21 19 / 0.12)", use: "Dropdowns, popovers" },
-  { token: "shadow-e4", value: "0 24px 64px rgb(22 21 19 / 0.18)", use: "Modals, drawers" },
+  { token: "shadow-e1", value: "0 1px 2px rgb(11 11 11 / 0.06)", use: "Resting cards, inputs" },
+  { token: "shadow-e2", value: "0 2px 8px rgb(11 11 11 / 0.08)", use: "Hovered cards, sticky nav" },
+  { token: "shadow-e3", value: "0 8px 24px rgb(11 11 11 / 0.12)", use: "Dropdowns, popovers" },
+  { token: "shadow-e4", value: "0 24px 64px rgb(11 11 11 / 0.18)", use: "Modals, drawers" },
 ];
 
 export const zIndexScale = [

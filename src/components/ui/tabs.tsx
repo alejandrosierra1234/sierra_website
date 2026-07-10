@@ -121,7 +121,7 @@ export function TabsContent({
       id={`${baseId}-panel-${value}`}
       aria-labelledby={`${baseId}-tab-${value}`}
       tabIndex={0}
-      className={cn("pt-4 focus-visible:outline-2 focus-visible:outline-clay-600", className)}
+      className={cn("pt-4 focus-visible:outline-2 focus-visible:outline-teal-700", className)}
     >
       {children}
     </div>

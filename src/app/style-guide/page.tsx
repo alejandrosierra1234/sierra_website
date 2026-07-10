@@ -106,7 +106,7 @@ export default function StyleGuidePage() {
               className="scroll-mt-24 border-t border-neutral-200 py-16 lg:py-20"
             >
               <div className="rounded-lg bg-neutral-900 px-8 py-12 text-paper lg:px-16 lg:py-16">
-                <p className="eyebrow text-clay-300">Governance</p>
+                <p className="eyebrow text-teal-400">Governance</p>
                 <h2 id="governance-title" className="mt-3 max-w-xl text-3xl font-semibold tracking-tight text-balance lg:text-4xl">
                   The system is the contract.
                 </h2>

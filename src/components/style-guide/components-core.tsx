@@ -114,7 +114,7 @@ export function ComponentsCoreChapter() {
           ]}
           a11y={[
             "Renders a real <button> or <a> — links get href, actions get type.",
-            "Focus ring: 2px clay-600 outline with 2px offset on :focus-visible.",
+            "Focus ring: 2px teal-700 outline with 2px offset on :focus-visible.",
             "Disabled uses opacity, never color alone; loading sets aria-busy.",
             "Minimum target 32×32px; md (40px) is the default for touch.",
           ]}
@@ -152,7 +152,7 @@ export function ComponentsCoreChapter() {
           a11y={[
             "Every control is wired to a <label> via Field (htmlFor/id).",
             "Errors set aria-invalid and are linked with aria-describedby.",
-            "Focus replaces the border with the 2px clay-600 outline — always visible.",
+            "Focus replaces the border with the 2px teal-700 outline — always visible.",
             "Autocomplete attributes on all identity fields.",
           ]}
         />

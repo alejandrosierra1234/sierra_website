@@ -51,7 +51,7 @@ export function Field({
 const controlBase = cn(
   "w-full rounded-sm border border-neutral-300 bg-surface text-base text-ink placeholder:text-neutral-400",
   "transition-colors duration-150 ease-precise hover:border-neutral-400",
-  "focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-clay-600 focus-visible:border-transparent",
+  "focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-teal-700 focus-visible:border-transparent",
   "disabled:cursor-not-allowed disabled:bg-neutral-50 disabled:text-neutral-400",
   "aria-invalid:border-danger",
 );
@@ -119,7 +119,7 @@ export function Checkbox({
         type="checkbox"
         id={id}
         {...props}
-        className="mt-0.5 size-4 shrink-0 rounded-xs border-neutral-300 accent-clay-600"
+        className="mt-0.5 size-4 shrink-0 rounded-xs border-neutral-300 accent-teal-700"
       />
       <span>{label}</span>
     </label>

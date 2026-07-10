@@ -39,7 +39,7 @@ export function DownloadCard({
       </span>
       <Download
         aria-hidden
-        className="size-4 shrink-0 text-neutral-400 transition-colors duration-150 group-hover:text-clay-700"
+        className="size-4 shrink-0 text-neutral-400 transition-colors duration-150 group-hover:text-teal-800"
       />
     </a>
   );

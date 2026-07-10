@@ -4,46 +4,84 @@
    SIERRA Design Tokens — single source of truth.
    Every value used in the UI must trace back to a token defined here.
    Documented at /style-guide. Update the Style Guide before changing.
+
+   Color values marked "brand" are taken verbatim from the SIERRA
+   palette; intermediate steps are derived to complete each scale.
    ------------------------------------------------------------------ */
 
 @theme {
+  /* Only SIERRA colors exist — the default Tailwind palette is disabled. */
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+  --color-white: #ffffff;
+  --color-black: #000000;
+
   /* ---- Color · Surfaces & ink ---- */
-  --color-paper: #fbfaf8;
-  --color-surface: #ffffff;
-  --color-ink: #161513;
+  --color-paper: #ffffff; /* brand */
+  --color-surface: #ffffff; /* brand */
+  --color-ink: #0b0b0b; /* brand */
 
-  /* ---- Color · Warm neutrals (fiber scale) ---- */
-  --color-neutral-50: #f6f5f2;
-  --color-neutral-100: #eceae5;
-  --color-neutral-200: #ddd9d2;
-  --color-neutral-300: #c4bfb5;
-  --color-neutral-400: #a39d91;
-  --color-neutral-500: #857f73;
-  --color-neutral-600: #68635a;
-  --color-neutral-700: #504c45;
-  --color-neutral-800: #383530;
-  --color-neutral-900: #23211d;
-  --color-neutral-950: #161513;
+  /* ---- Color · Neutral grays (brand ramp, interpolated) ---- */
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f5f5f5; /* brand */
+  --color-neutral-200: #e5e5e5; /* brand */
+  --color-neutral-300: #d4d4d4;
+  --color-neutral-400: #a4a4a4; /* brand */
+  --color-neutral-500: #737373;
+  --color-neutral-600: #565656;
+  --color-neutral-700: #444444; /* brand */
+  --color-neutral-800: #2b2b2b; /* brand */
+  --color-neutral-900: #171717;
+  --color-neutral-950: #0b0b0b; /* brand */
 
-  /* ---- Color · Clay accent (single brand accent) ---- */
-  --color-clay-50: #fbf3ef;
-  --color-clay-100: #f5e2d8;
-  --color-clay-200: #eac3b0;
-  --color-clay-300: #dc9f82;
-  --color-clay-400: #cb7a54;
-  --color-clay-500: #b45e36;
-  --color-clay-600: #9a4b28;
-  --color-clay-700: #7c3c21;
-  --color-clay-800: #5e2e1a;
-  --color-clay-900: #402014;
+  /* ---- Color · Teal (primary accent) ---- */
+  --color-teal-50: #e8fffd;
+  --color-teal-100: #cffffb; /* brand */
+  --color-teal-200: #9ff2ea;
+  --color-teal-300: #67e2d6;
+  --color-teal-400: #38d8c9;
+  --color-teal-500: #16cdbe; /* brand */
+  --color-teal-600: #0ba496;
+  --color-teal-700: #007d73; /* brand */
+  --color-teal-800: #055e57;
+  --color-teal-900: #08403c;
 
-  /* ---- Color · Semantic ---- */
-  --color-success: #2e6b4f;
-  --color-warning: #8a5b12;
-  --color-danger: #a03232;
+  /* ---- Color · Brand mark (logo isotype only) ---- */
+  --color-mark: #59a29e;
+
+  /* ---- Color · Extended palette (charts, categories, illustration) ---- */
+  --color-green-100: #d1ffbe; /* brand */
+  --color-green-500: #3ed600; /* brand */
+  --color-green-700: #2a9200; /* brand */
+  --color-blue-100: #c5e9ff; /* brand */
+  --color-blue-500: #009fff; /* brand */
+  --color-blue-700: #004a86; /* brand */
+  --color-purple-100: #f6d8ff; /* brand */
+  --color-purple-500: #9e00cb; /* brand */
+  --color-purple-700: #670084; /* brand */
+  --color-yellow-100: #fff0af; /* brand */
+  --color-yellow-500: #ffc529; /* brand */
+  --color-yellow-700: #bb9800; /* brand */
+  --color-orange-100: #ffe3d2; /* brand */
+  --color-orange-500: #ff7824; /* brand */
+  --color-orange-700: #cd4f00; /* brand */
+  --color-red-100: #ffc7c7; /* brand */
+  --color-red-500: #e80000; /* brand */
+  --color-red-700: #b40b0b; /* brand */
+  --color-lime-100: #efefaf; /* brand */
+  --color-lime-500: #c4c412; /* brand */
+  --color-lime-700: #827e00; /* brand */
+
+  /* ---- Color · Semantic (text-safe: AA on white and on their tint) ---- */
+  --color-success: #257f08; /* derived from green-700 for AA text */
+  --color-warning: #7a6400; /* derived from yellow-700 for AA text */
+  --color-danger: #b40b0b; /* brand red-700 */
+  --color-danger-strong: #8f0909; /* pressed/hover on danger */
+  --color-info: #004a86; /* brand blue-700 */
 
   /* ---- Typography ---- */
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-replica), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", monospace;
 
   --text-display: clamp(2.75rem, 2rem + 3vw, 4.25rem);
@@ -57,10 +95,10 @@
   --radius-lg: 12px;
 
   /* ---- Shadows / Elevation ---- */
-  --shadow-e1: 0 1px 2px rgb(22 21 19 / 0.06);
-  --shadow-e2: 0 2px 8px rgb(22 21 19 / 0.08);
-  --shadow-e3: 0 8px 24px rgb(22 21 19 / 0.12);
-  --shadow-e4: 0 24px 64px rgb(22 21 19 / 0.18);
+  --shadow-e1: 0 1px 2px rgb(11 11 11 / 0.06);
+  --shadow-e2: 0 2px 8px rgb(11 11 11 / 0.08);
+  --shadow-e3: 0 8px 24px rgb(11 11 11 / 0.12);
+  --shadow-e4: 0 24px 64px rgb(11 11 11 / 0.18);
 
   /* ---- Motion ---- */
   --ease-precise: cubic-bezier(0.2, 0, 0, 1);
@@ -119,14 +157,14 @@
     text-rendering: optimizeLegibility;
   }
   ::selection {
-    background-color: var(--color-clay-200);
+    background-color: var(--color-teal-100);
   }
   :focus-visible {
-    outline: 2px solid var(--color-clay-600);
+    outline: 2px solid var(--color-teal-700);
     outline-offset: 2px;
   }
   dialog::backdrop {
-    background: rgb(22 21 19 / 0.55);
+    background: rgb(11 11 11 / 0.55);
   }
   @media (prefers-reduced-motion: reduce) {
     *,
@@ -161,7 +199,7 @@
     font-weight: 500;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--color-clay-600);
+    color: var(--color-teal-700);
   }
 
   /* Placeholder surface for product imagery (photography direction stand-in) */
@@ -169,15 +207,15 @@
     background-color: var(--color-neutral-100);
     background-image: repeating-linear-gradient(
         45deg,
-        rgb(22 21 19 / 0.04) 0px,
-        rgb(22 21 19 / 0.04) 2px,
+        rgb(11 11 11 / 0.04) 0px,
+        rgb(11 11 11 / 0.04) 2px,
         transparent 2px,
         transparent 6px
       ),
       repeating-linear-gradient(
         -45deg,
-        rgb(22 21 19 / 0.03) 0px,
-        rgb(22 21 19 / 0.03) 2px,
+        rgb(11 11 11 / 0.03) 0px,
+        rgb(11 11 11 / 0.03) 2px,
         transparent 2px,
         transparent 6px
       );

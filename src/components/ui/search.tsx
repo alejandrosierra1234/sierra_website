@@ -36,7 +36,7 @@ export function SearchInput({
         className={cn(
           "h-10 w-full rounded-sm border border-neutral-300 bg-surface pr-9 pl-9 text-base text-ink",
           "placeholder:text-neutral-400 transition-colors duration-150 ease-precise hover:border-neutral-400",
-          "focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-clay-600 focus-visible:border-transparent",
+          "focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-teal-700 focus-visible:border-transparent",
           "[&::-webkit-search-cancel-button]:hidden",
         )}
       />

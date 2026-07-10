@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Logo } from "@/components/site/logo";
 
 const columns = [
   {
@@ -24,7 +25,7 @@ export function Footer() {
     <footer className="bg-neutral-900 text-neutral-300">
       <div className="container-page grid gap-12 py-16 lg:grid-cols-[2fr_3fr]">
         <div>
-          <p className="font-semibold tracking-[0.3em] text-paper">SIERRA</p>
+          <Logo tone="inverse" className="h-6" />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-neutral-400">
             Fully vertical textile manufacturing. From fiber to finished
             product — one partner, one standard, full traceability.

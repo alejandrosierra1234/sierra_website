@@ -28,14 +28,14 @@ export function IndustryCard({
         className,
       )}
     >
-      <span className="inline-flex size-10 items-center justify-center rounded-sm bg-neutral-100 text-ink transition-colors duration-150 group-hover:bg-clay-100 group-hover:text-clay-800">
+      <span className="inline-flex size-10 items-center justify-center rounded-sm bg-neutral-100 text-ink transition-colors duration-150 group-hover:bg-teal-100 group-hover:text-teal-800">
         <Icon aria-hidden className="size-5" strokeWidth={1.5} />
       </span>
       <div className="flex-1">
         <h3 className="text-lg font-semibold tracking-tight">{title}</h3>
         <p className="mt-1.5 text-sm leading-relaxed text-neutral-600">{description}</p>
       </div>
-      <span className="inline-flex items-center gap-1.5 text-sm font-medium text-clay-700">
+      <span className="inline-flex items-center gap-1.5 text-sm font-medium text-teal-800">
         Explore
         <ArrowRight
           aria-hidden

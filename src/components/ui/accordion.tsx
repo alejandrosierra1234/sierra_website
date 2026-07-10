@@ -41,7 +41,7 @@ export function Accordion({
                 onClick={() => setOpen(expanded ? -1 : i)}
                 className={cn(
                   "flex w-full items-center justify-between gap-4 py-4 text-left text-base font-medium",
-                  "transition-colors duration-150 ease-precise hover:text-clay-700",
+                  "transition-colors duration-150 ease-precise hover:text-teal-800",
                 )}
               >
                 {item.title}

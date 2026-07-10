@@ -15,7 +15,8 @@ import { Table, THead, TBody, Tr, Th, Td } from "@/components/ui/table";
 import {
   surfaceColors,
   neutralColors,
-  clayColors,
+  tealColors,
+  extendedColors,
   semanticColors,
   typeScale,
   spacingScale,
@@ -33,7 +34,7 @@ export function FoundationsChapter() {
       <Topic
         id="colors"
         title="Color"
-        lede="A warm neutral scale drawn from natural fiber, ink for text and dark surfaces, and one clay accent. Color signals meaning; it never decorates."
+        lede="Clean white, an engineering gray ramp, and SIERRA teal as the single primary accent. An extended brand palette exists for charts and category coding. Color signals meaning; it never decorates."
       >
         <div>
           <h4 className="font-mono text-xs font-medium tracking-[0.14em] text-neutral-600 uppercase">Surfaces & ink</h4>
@@ -44,41 +45,63 @@ export function FoundationsChapter() {
           </div>
         </div>
         <div>
-          <h4 className="font-mono text-xs font-medium tracking-[0.14em] text-neutral-600 uppercase">Fiber neutrals</h4>
+          <h4 className="font-mono text-xs font-medium tracking-[0.14em] text-neutral-600 uppercase">Neutral grays</h4>
           <div className="mt-3 grid grid-cols-3 gap-4 sm:grid-cols-6 lg:grid-cols-11 lg:gap-2">
             {neutralColors.map((c) => (
-              <Swatch key={c.name} name={c.name.replace("neutral-", "")} value={c.value} border={Number(c.name.split("-")[1]) <= 100} />
+              <Swatch key={c.name} name={c.name.replace("neutral-", "")} value={c.value} border={Number(c.name.split("-")[1]) <= 200} />
             ))}
           </div>
         </div>
         <div>
-          <h4 className="font-mono text-xs font-medium tracking-[0.14em] text-neutral-600 uppercase">Clay accent</h4>
+          <h4 className="font-mono text-xs font-medium tracking-[0.14em] text-neutral-600 uppercase">SIERRA teal (primary accent)</h4>
           <div className="mt-3 grid grid-cols-3 gap-4 sm:grid-cols-5 lg:grid-cols-10 lg:gap-2">
-            {clayColors.map((c) => (
-              <Swatch key={c.name} name={c.name.replace("clay-", "")} value={c.value} border={c.name === "clay-50"} />
+            {tealColors.map((c) => (
+              <Swatch key={c.name} name={c.name.replace("teal-", "")} value={c.value} border={c.name === "teal-50" || c.name === "teal-100"} />
             ))}
           </div>
         </div>
         <div>
           <h4 className="font-mono text-xs font-medium tracking-[0.14em] text-neutral-600 uppercase">Semantic</h4>
-          <div className="mt-3 grid grid-cols-3 gap-4 lg:max-w-md">
+          <div className="mt-3 grid grid-cols-3 gap-4 sm:grid-cols-5">
             {semanticColors.map((c) => (
               <Swatch key={c.name} name={c.name} value={c.value} usage={c.usage} />
             ))}
           </div>
         </div>
+        <div>
+          <h4 className="font-mono text-xs font-medium tracking-[0.14em] text-neutral-600 uppercase">Extended palette (charts & categories)</h4>
+          <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {extendedColors.map((c) => {
+              const [tint, base, dark] = c.value.split(" · ");
+              return (
+                <div key={c.name}>
+                  <div className="flex h-12 overflow-hidden rounded-sm border border-neutral-200">
+                    <div className="flex-1" style={{ backgroundColor: tint }} />
+                    <div className="flex-1" style={{ backgroundColor: base }} />
+                    <div className="flex-1" style={{ backgroundColor: dark }} />
+                  </div>
+                  <p className="mt-2 text-sm font-medium">{c.name.split(" ")[0].replace("-100", "")}</p>
+                  <p className="font-mono text-[10px] text-neutral-500 uppercase">{c.value}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
         <p className="max-w-2xl text-sm leading-relaxed text-neutral-600">
-          Rules: <strong className="text-ink">clay-600</strong> is the only accent on light
-          surfaces (links, focus, key highlights); <strong className="text-ink">clay-300</strong>{" "}
-          is its equivalent on dark. Neutrals lighter than 600 are never used for text on paper.
-          Semantic colors are reserved for status — never decorative.
+          Rules: <strong className="text-ink">teal-700</strong> is the accent for text, links and
+          focus on light surfaces (AA at 5.0:1); <strong className="text-ink">teal-500</strong> —
+          the brand teal — carries accents on dark surfaces and large graphic moments.
+          Mid-scale brights (teal-500, green-500, red-500…) are never used for small text.
+          The extended palette is reserved for data visualization and category coding; UI status
+          always goes through the semantic tokens. The logo teal (<strong className="text-ink">mark
+          #59A29E</strong>) belongs to the isotype alone.
         </p>
       </Topic>
 
       <Topic
         id="typography"
         title="Typography"
-        lede="Geist Sans for everything human, Geist Mono for everything technical — specs, figures, labels, code. Two families, one system."
+        lede="Replica — the SIERRA brand typeface — for everything human; Geist Mono for everything technical: specs, figures, labels, code. Two families, one system."
       >
         <Demo tone="bare">
           <div className="flex flex-col divide-y divide-neutral-100">
@@ -113,8 +136,10 @@ export function FoundationsChapter() {
         </Demo>
         <p className="max-w-2xl text-sm leading-relaxed text-neutral-600">
           Body copy is 16px/1.6 with a 65–75 character measure. Headings use tight tracking
-          (−1% to −2%) and text-balance. Weights: 400 body, 500 UI and emphasis, 600 headings.
-          Never use 700+ — confidence comes from scale and space, not weight.
+          (−1% to −2%) and text-balance. Replica ships in three cuts: Light 300 (large display
+          accents only), Regular 400 (body and UI — also serves the 500 range), and Bold 700
+          (headings and emphasis — also serves 600). Weights are mapped so nothing is ever
+          synthesized by the browser.
         </p>
       </Topic>
 
@@ -129,7 +154,7 @@ export function FoundationsChapter() {
               {Array.from({ length: 12 }).map((_, i) => (
                 <div
                   key={i}
-                  className={`flex h-20 items-center justify-center rounded-xs bg-clay-100 font-mono text-xs text-clay-800 ${
+                  className={`flex h-20 items-center justify-center rounded-xs bg-teal-100 font-mono text-xs text-teal-800 ${
                     i >= 8 ? "hidden lg:flex" : i >= 4 ? "hidden sm:flex" : ""
                   }`}
                 >
@@ -170,7 +195,7 @@ export function FoundationsChapter() {
                   <Td className="font-mono text-xs">{s.token}</Td>
                   <Td numeric>{s.px}</Td>
                   <Td>
-                    <div className="h-3 rounded-xs bg-clay-300" style={{ width: s.px }} />
+                    <div className="h-3 rounded-xs bg-teal-400" style={{ width: s.px }} />
                   </Td>
                   <Td className="text-neutral-600">{s.use}</Td>
                 </Tr>

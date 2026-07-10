@@ -3,7 +3,7 @@ import { Table, THead, TBody, Tr, Th, Td } from "@/components/ui/table";
 import {
   surfaceColors,
   neutralColors,
-  clayColors,
+  tealColors,
   semanticColors,
   radiusScale,
   shadowScale,
@@ -55,7 +55,7 @@ export function TokensChapter() {
           <TBody>
             <ColorRows tokens={surfaceColors} />
             <ColorRows tokens={neutralColors} />
-            <ColorRows tokens={clayColors} />
+            <ColorRows tokens={tealColors} />
             <ColorRows tokens={semanticColors} />
           </TBody>
         </Table>
@@ -94,7 +94,7 @@ export function TokensChapter() {
           <TBody>
             <Tr>
               <Td className="font-mono text-xs">--font-sans</Td>
-              <Td className="font-mono text-xs">Geist Sans, system-ui</Td>
+              <Td className="font-mono text-xs">Replica, system-ui</Td>
               <Td className="text-neutral-600">All reading and UI text</Td>
             </Tr>
             <Tr>

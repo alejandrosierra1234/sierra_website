@@ -10,10 +10,10 @@ export type BadgeVariant =
 
 const variantClasses: Record<BadgeVariant, string> = {
   neutral: "bg-neutral-100 text-neutral-700",
-  accent: "bg-clay-100 text-clay-900",
-  success: "bg-[#e3efe8] text-success",
-  warning: "bg-[#f5ecda] text-warning",
-  danger: "bg-[#f6e4e4] text-danger",
+  accent: "bg-teal-100 text-teal-900",
+  success: "bg-green-100 text-success",
+  warning: "bg-yellow-100 text-warning",
+  danger: "bg-red-100 text-danger",
   outline: "border border-neutral-300 text-neutral-700",
 };
 

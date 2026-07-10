@@ -95,7 +95,7 @@ export function Guidelines({ usage, a11y }: { usage: string[]; a11y: string[] })
         <ul className="mt-3 flex flex-col gap-2">
           {usage.map((rule) => (
             <li key={rule} className="flex gap-2.5 text-sm leading-relaxed text-neutral-700">
-              <span aria-hidden className="mt-2 size-1 shrink-0 rounded-full bg-clay-600" />
+              <span aria-hidden className="mt-2 size-1 shrink-0 rounded-full bg-teal-700" />
               {rule}
             </li>
           ))}
@@ -208,7 +208,7 @@ export function BlueprintRow({
     light: "bg-neutral-100 text-neutral-600",
     mid: "bg-neutral-200 text-neutral-700",
     dark: "bg-neutral-800 text-neutral-300",
-    accent: "bg-clay-100 text-clay-900",
+    accent: "bg-teal-100 text-teal-900",
   };
   return (
     <div className="grid gap-1" style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}>

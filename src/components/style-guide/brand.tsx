@@ -113,7 +113,7 @@ export function BrandChapter() {
       <Topic
         id="visual-language"
         title="Visual language"
-        lede="Warm neutrals drawn from natural fiber, near-black ink, and a single clay accent. Photography does the emotional work; the UI stays quiet."
+        lede="Clean white space, engineering grays, and SIERRA teal as the single accent — anchored by the Replica typeface and the interlocking-rhombus mark. Photography does the emotional work; the UI stays quiet."
       >
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="rounded-md bg-neutral-50 p-6">
@@ -123,7 +123,7 @@ export function BrandChapter() {
             <ul className="mt-3 flex flex-col gap-2 text-sm leading-relaxed text-neutral-700">
               <li>Honest industrial photography: real facilities, real hands, natural light.</li>
               <li>Macro texture shots of yarn, weave, and finish — material as landscape.</li>
-              <li>Muted, warm grading consistent with the fiber neutral palette.</li>
+              <li>Clean, neutral grading — teal appears in the work, never as a filter.</li>
               <li>No stock handshakes, no staged smiling teams, no abstract 3D renders.</li>
             </ul>
           </div>

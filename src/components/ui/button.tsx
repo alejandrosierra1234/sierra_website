@@ -11,7 +11,7 @@ const variantClasses: Record<ButtonVariant, string> = {
     "border border-neutral-300 bg-transparent text-ink hover:border-neutral-500 hover:bg-neutral-50 active:bg-neutral-100",
   ghost: "bg-transparent text-ink hover:bg-neutral-100 active:bg-neutral-200",
   inverse: "bg-paper text-ink hover:bg-neutral-100 active:bg-neutral-200",
-  destructive: "bg-danger text-paper hover:bg-[#8c2b2b] active:bg-[#7a2525]",
+  destructive: "bg-danger text-paper hover:bg-danger-strong active:bg-danger-strong",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {

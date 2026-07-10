@@ -4,12 +4,14 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 const contrastPairs = [
-  { fg: "ink #161513", bg: "paper #FBFAF8", ratio: "17.4 : 1", grade: "AAA", use: "Body text" },
-  { fg: "neutral-600 #68635A", bg: "paper #FBFAF8", ratio: "5.7 : 1", grade: "AA", use: "Secondary text" },
-  { fg: "clay-600 #9A4B28", bg: "paper #FBFAF8", ratio: "5.9 : 1", grade: "AA", use: "Links, accents" },
-  { fg: "paper #FBFAF8", bg: "neutral-900 #23211D", ratio: "15.9 : 1", grade: "AAA", use: "Dark section headings" },
-  { fg: "neutral-300 #C4BFB5", bg: "neutral-900 #23211D", ratio: "8.9 : 1", grade: "AAA", use: "Dark section body" },
-  { fg: "paper #FBFAF8", bg: "danger #A03232", ratio: "6.6 : 1", grade: "AA", use: "Destructive buttons" },
+  { fg: "ink #0B0B0B", bg: "paper #FFFFFF", ratio: "19.7 : 1", grade: "AAA", use: "Body text" },
+  { fg: "neutral-600 #565656", bg: "paper #FFFFFF", ratio: "7.3 : 1", grade: "AAA", use: "Secondary text" },
+  { fg: "teal-700 #007D73", bg: "paper #FFFFFF", ratio: "5.0 : 1", grade: "AA", use: "Links, accents, focus ring" },
+  { fg: "paper #FFFFFF", bg: "neutral-900 #171717", ratio: "17.6 : 1", grade: "AAA", use: "Dark section headings" },
+  { fg: "neutral-300 #D4D4D4", bg: "neutral-900 #171717", ratio: "11.7 : 1", grade: "AAA", use: "Dark section body" },
+  { fg: "teal-500 #16CDBE", bg: "neutral-900 #171717", ratio: "8.8 : 1", grade: "AAA", use: "Accent on dark surfaces" },
+  { fg: "paper #FFFFFF", bg: "danger #B40B0B", ratio: "7.0 : 1", grade: "AAA", use: "Destructive buttons" },
+  { fg: "success #257F08", bg: "green-100 #D1FFBE", ratio: "4.9 : 1", grade: "AA", use: "Status badges" },
 ];
 
 const keyboardMap = [
@@ -84,20 +86,20 @@ export function AccessibilityChapter() {
       <Topic
         id="focus"
         title="Focus states"
-        lede="One focus style everywhere: a 2px clay-600 outline, offset 2px, on :focus-visible. It is never removed, only restyled within these rules."
+        lede="One focus style everywhere: a 2px teal-700 outline, offset 2px, on :focus-visible. It is never removed, only restyled within these rules."
       >
         <div className="rounded-md border border-neutral-200 bg-surface p-8">
           <p className="mb-4 text-sm text-neutral-600">Press Tab to walk the focus ring through real components:</p>
           <div className="flex flex-wrap items-center gap-3">
             <Button>Primary</Button>
             <Button variant="secondary">Secondary</Button>
-            <a href="#accessibility" className="rounded-xs px-1 text-sm font-medium text-clay-700 underline underline-offset-4">
+            <a href="#accessibility" className="rounded-xs px-1 text-sm font-medium text-teal-800 underline underline-offset-4">
               Text link
             </a>
             <input
               aria-label="Sample input"
               placeholder="Sample input"
-              className="h-10 rounded-sm border border-neutral-300 bg-surface px-3 text-base placeholder:text-neutral-400 focus-visible:border-transparent focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-clay-600"
+              className="h-10 rounded-sm border border-neutral-300 bg-surface px-3 text-base placeholder:text-neutral-400 focus-visible:border-transparent focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-teal-700"
             />
           </div>
         </div>

@@ -31,7 +31,7 @@ export function ProductCard({
       <div className="swatch-weave aspect-4/3 w-full transition-opacity duration-150 group-hover:opacity-90" />
       <div className="p-5">
         <p className="eyebrow">{category}</p>
-        <h3 className="mt-2 text-lg font-semibold tracking-tight transition-colors duration-150 group-hover:text-clay-700">
+        <h3 className="mt-2 text-lg font-semibold tracking-tight transition-colors duration-150 group-hover:text-teal-800">
           {name}
         </h3>
         {specs.length > 0 && (

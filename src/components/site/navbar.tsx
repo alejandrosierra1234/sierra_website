@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Drawer } from "@/components/ui/drawer";
+import { Logo } from "@/components/site/logo";
 import { cn } from "@/lib/cn";
 
 export const navLinks = [
@@ -18,11 +19,8 @@ export const navLinks = [
 
 export function Wordmark({ className }: { className?: string }) {
   return (
-    <Link
-      href="/"
-      className={cn("font-semibold tracking-[0.3em] whitespace-nowrap select-none", className)}
-    >
-      SIERRA
+    <Link href="/" aria-label="SIERRA — home" className={cn("select-none", className)}>
+      <Logo className="h-6" />
     </Link>
   );
 }
