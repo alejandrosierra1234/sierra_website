@@ -38,7 +38,7 @@ export function Navbar({
   return (
     <header
       className={cn(
-        "w-full border-b border-neutral-200 bg-paper/90 backdrop-blur",
+        "w-full border-b border-neutral-100 bg-paper/80 backdrop-blur-md",
         sticky && "sticky top-0 z-(--z-nav)",
       )}
     >
@@ -51,7 +51,7 @@ export function Navbar({
               <li key={link.label}>
                 <Link
                   href={link.href}
-                  className="rounded-sm px-3 py-2 text-sm font-medium text-neutral-700 transition-colors duration-150 ease-precise hover:bg-neutral-100 hover:text-ink"
+                  className="rounded-full px-3 py-2 text-sm font-medium text-neutral-600 transition-colors duration-150 ease-precise hover:bg-neutral-100 hover:text-ink"
                 >
                   {link.label}
                 </Link>

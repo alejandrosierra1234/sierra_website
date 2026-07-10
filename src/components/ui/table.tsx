@@ -15,7 +15,7 @@ export function Table({
   children: React.ReactNode;
 }) {
   return (
-    <div className={cn("overflow-x-auto rounded-md border border-neutral-200 bg-surface", className)}>
+    <div className={cn("overflow-x-auto rounded-lg bg-surface shadow-e1", className)}>
       <table className="w-full border-collapse text-left text-sm">
         {caption && <caption className="sr-only">{caption}</caption>}
         {children}
@@ -25,7 +25,7 @@ export function Table({
 }
 
 export function THead({ children }: { children: React.ReactNode }) {
-  return <thead className="border-b border-neutral-200 bg-neutral-50">{children}</thead>;
+  return <thead className="border-b border-neutral-100">{children}</thead>;
 }
 
 export function TBody({ children }: { children: React.ReactNode }) {
@@ -49,7 +49,7 @@ export function Th({
     <th
       scope="col"
       className={cn(
-        "px-4 py-3 font-mono text-xs font-medium tracking-wider text-neutral-600 uppercase",
+        "px-4 py-3 font-mono text-xs font-medium tracking-wider text-neutral-500 uppercase",
         numeric && "text-right",
         className,
       )}

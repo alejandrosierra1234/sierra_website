@@ -66,10 +66,10 @@ export function Demo({
     <figure>
       <div
         className={cn(
-          "rounded-md border border-neutral-200",
-          tone === "default" && "bg-surface p-8",
+          "rounded-lg",
+          tone === "default" && "bg-neutral-50 p-8",
           tone === "dark" && "bg-neutral-900 p-8",
-          tone === "bare" && "overflow-hidden bg-surface",
+          tone === "bare" && "overflow-hidden bg-surface shadow-e1",
           className,
         )}
       >
@@ -88,27 +88,27 @@ export function Demo({
 export function Guidelines({ usage, a11y }: { usage: string[]; a11y: string[] }) {
   return (
     <div className="grid gap-6 lg:grid-cols-2">
-      <div className="rounded-md bg-neutral-50 p-6">
+      <div className="rounded-lg bg-neutral-50 p-6">
         <h4 className="font-mono text-xs font-medium tracking-[0.14em] text-neutral-600 uppercase">
           Usage
         </h4>
         <ul className="mt-3 flex flex-col gap-2">
           {usage.map((rule) => (
             <li key={rule} className="flex gap-2.5 text-sm leading-relaxed text-neutral-700">
-              <span aria-hidden className="mt-2 size-1 shrink-0 rounded-full bg-teal-700" />
+              <span aria-hidden className="mt-2 size-1 shrink-0 rounded-full bg-neutral-400" />
               {rule}
             </li>
           ))}
         </ul>
       </div>
-      <div className="rounded-md bg-neutral-50 p-6">
+      <div className="rounded-lg bg-neutral-50 p-6">
         <h4 className="font-mono text-xs font-medium tracking-[0.14em] text-neutral-600 uppercase">
           Accessibility
         </h4>
         <ul className="mt-3 flex flex-col gap-2">
           {a11y.map((rule) => (
             <li key={rule} className="flex gap-2.5 text-sm leading-relaxed text-neutral-700">
-              <span aria-hidden className="mt-2 size-1 shrink-0 rounded-full bg-success" />
+              <span aria-hidden className="mt-2 size-1 shrink-0 rounded-full bg-neutral-400" />
               {rule}
             </li>
           ))}
@@ -122,7 +122,7 @@ export function Guidelines({ usage, a11y }: { usage: string[]; a11y: string[] })
 export function DoDont({ dos, donts }: { dos: string[]; donts: string[] }) {
   return (
     <div className="grid gap-6 lg:grid-cols-2">
-      <div className="rounded-md border-t-2 border-success bg-neutral-50 p-6">
+      <div className="rounded-lg border-t-2 border-success bg-neutral-50 p-6">
         <h4 className="flex items-center gap-2 text-sm font-semibold text-success">
           <Check aria-hidden className="size-4" /> Do
         </h4>
@@ -134,7 +134,7 @@ export function DoDont({ dos, donts }: { dos: string[]; donts: string[] }) {
           ))}
         </ul>
       </div>
-      <div className="rounded-md border-t-2 border-danger bg-neutral-50 p-6">
+      <div className="rounded-lg border-t-2 border-danger bg-neutral-50 p-6">
         <h4 className="flex items-center gap-2 text-sm font-semibold text-danger">
           <X aria-hidden className="size-4" /> Don’t
         </h4>
@@ -153,12 +153,12 @@ export function DoDont({ dos, donts }: { dos: string[]; donts: string[] }) {
 /** Voice example: say this, not that. */
 export function VoicePair({ say, not }: { say: string; not: string }) {
   return (
-    <div className="grid gap-px overflow-hidden rounded-md border border-neutral-200 bg-neutral-200 sm:grid-cols-2">
-      <div className="bg-surface p-5">
+    <div className="grid gap-3 sm:grid-cols-2">
+      <div className="rounded-lg bg-neutral-50 p-5">
         <p className="font-mono text-xs font-medium tracking-[0.14em] text-success uppercase">Say</p>
         <p className="mt-2 text-sm leading-relaxed">“{say}”</p>
       </div>
-      <div className="bg-surface p-5">
+      <div className="rounded-lg bg-neutral-50 p-5">
         <p className="font-mono text-xs font-medium tracking-[0.14em] text-danger uppercase">Not</p>
         <p className="mt-2 text-sm leading-relaxed text-neutral-500">“{not}”</p>
       </div>
@@ -241,7 +241,7 @@ export function Blueprint({
   notes: string[];
 }) {
   return (
-    <div className="rounded-md border border-neutral-200 bg-surface p-6">
+    <div className="rounded-lg bg-surface p-6 shadow-e1">
       <h4 className="text-lg font-semibold tracking-tight">{title}</h4>
       <p className="mt-1 text-sm leading-relaxed text-neutral-600">{description}</p>
       <div className="mt-4 flex flex-col gap-1">{children}</div>

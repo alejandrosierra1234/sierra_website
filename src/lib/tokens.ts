@@ -45,13 +45,38 @@ export const tealColors: ColorToken[] = [
 ];
 
 export const extendedColors: ColorToken[] = [
-  { name: "green-100 / 500 / 700", value: "#D1FFBE · #3ED600 · #2A9200", usage: "Success family, charts (brand)" },
+  { name: "lime-100 / 500 / 700", value: "#EFEFAF · #C4C412 · #827E00", usage: "SIERRA secondary color — editorial accents, data viz (brand)" },
+  { name: "green-100 / 500 / 700", value: "#D1FFBE · #3ED600 · #2A9200", usage: "Sustainability theme — exclusive to sustainability content (brand)" },
   { name: "blue-100 / 500 / 700", value: "#C5E9FF · #009FFF · #004A86", usage: "Info family, charts (brand)" },
   { name: "purple-100 / 500 / 700", value: "#F6D8FF · #9E00CB · #670084", usage: "Charts, category coding (brand)" },
   { name: "yellow-100 / 500 / 700", value: "#FFF0AF · #FFC529 · #BB9800", usage: "Warning family, charts (brand)" },
   { name: "orange-100 / 500 / 700", value: "#FFE3D2 · #FF7824 · #CD4F00", usage: "Charts, category coding (brand)" },
   { name: "red-100 / 500 / 700", value: "#FFC7C7 · #E80000 · #B40B0B", usage: "Danger family (brand)" },
-  { name: "lime-100 / 500 / 700", value: "#EFEFAF · #C4C412 · #827E00", usage: "Charts, category coding (brand)" },
+];
+
+/** Fixed color roles — which family may do what. The answer to “why is
+ *  this green?” must always be one of these four rows. */
+export const colorRoles = [
+  {
+    role: "Primary — SIERRA Teal",
+    family: "teal",
+    rule: "The interactive voice: links, focus, selection, key highlights. teal-700 on light surfaces, teal-500 on dark. One accent moment per screen.",
+  },
+  {
+    role: "Secondary — Lime",
+    family: "lime",
+    rule: "The editorial companion: chart series next to teal, section markers, campaign graphics. Never interactive — a lime element is never a control.",
+  },
+  {
+    role: "Sustainability — Green",
+    family: "green",
+    rule: "Reserved for sustainability content: impact sections, environmental data, certifications context. Thematic, not a status color.",
+  },
+  {
+    role: "Feedback — Semantic",
+    family: "success · warning · danger · info",
+    rule: "System states only: form validation, stock, alerts. Fixed meanings so feedback is never ambiguous — never decorative, never thematic.",
+  },
 ];
 
 export const semanticColors: ColorToken[] = [
@@ -88,18 +113,19 @@ export const spacingScale = [
 ];
 
 export const radiusScale = [
-  { token: "radius-xs", value: "2px", use: "Badges, checkboxes, small chips" },
-  { token: "radius-sm", value: "4px", use: "Buttons, inputs, table cells" },
-  { token: "radius-md", value: "8px", use: "Cards, panels, modals" },
-  { token: "radius-lg", value: "12px", use: "Large media, CTA blocks, drawers" },
-  { token: "radius-full", value: "9999px", use: "Pills, avatar, icon buttons" },
+  { token: "radius-xs", value: "4px", use: "Checkboxes, small chips, diagram cells" },
+  { token: "radius-sm", value: "8px", use: "Swatches, small containers" },
+  { token: "radius-md", value: "12px", use: "Inputs, selects, textareas" },
+  { token: "radius-lg", value: "16px", use: "Cards, tables, modals, panels" },
+  { token: "radius-xl", value: "24px", use: "Large media, landmark panels" },
+  { token: "radius-full", value: "9999px", use: "Buttons, badges, pagination — all pills" },
 ];
 
 export const shadowScale = [
-  { token: "shadow-e1", value: "0 1px 2px rgb(11 11 11 / 0.06)", use: "Resting cards, inputs" },
-  { token: "shadow-e2", value: "0 2px 8px rgb(11 11 11 / 0.08)", use: "Hovered cards, sticky nav" },
-  { token: "shadow-e3", value: "0 8px 24px rgb(11 11 11 / 0.12)", use: "Dropdowns, popovers" },
-  { token: "shadow-e4", value: "0 24px 64px rgb(11 11 11 / 0.18)", use: "Modals, drawers" },
+  { token: "shadow-e1", value: "0 1px 2px / 0.04 + 0 2px 8px / 0.04", use: "Resting cards, tables" },
+  { token: "shadow-e2", value: "0 2px 4px / 0.04 + 0 8px 24px / 0.06", use: "Hovered cards, sticky nav" },
+  { token: "shadow-e3", value: "0 4px 8px / 0.05 + 0 16px 40px / 0.10", use: "Dropdowns, popovers" },
+  { token: "shadow-e4", value: "0 8px 16px / 0.06 + 0 32px 80px / 0.16", use: "Modals, drawers" },
 ];
 
 export const zIndexScale = [

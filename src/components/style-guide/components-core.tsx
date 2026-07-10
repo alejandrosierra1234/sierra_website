@@ -124,7 +124,7 @@ export function ComponentsCoreChapter() {
       <Topic
         id="inputs"
         title="Inputs"
-        lede="Text inputs, textareas and selects share one control style: 40px height, sm radius, surface background, visible label above."
+        lede="Text inputs, textareas and selects share one control style: 44px height, md radius, quiet border, visible label above."
       >
         <Demo label="Default, hint, error, and disabled states.">
           <div className="grid max-w-xl gap-5">
@@ -215,7 +215,7 @@ export function ComponentsCoreChapter() {
       <Topic
         id="cards"
         title="Cards"
-        lede="The general-purpose surface: white, hairline border, md radius, e1 shadow. Interactive cards raise to e2 on hover."
+        lede="The general-purpose surface: white, borderless, lg radius, resting on a soft e1 shadow. Interactive cards raise to e2 on hover."
       >
         <Demo label="Static card and interactive (hover) card.">
           <div className="grid gap-6 sm:grid-cols-2">
@@ -239,8 +239,8 @@ export function ComponentsCoreChapter() {
                 <p className="eyebrow">Interactive</p>
                 <h4 className="mt-2 text-lg font-semibold tracking-tight">Hover me</h4>
                 <p className="mt-2 text-sm leading-relaxed text-neutral-600">
-                  Cards that link somewhere use the interactive variant: border darkens and
-                  elevation rises to e2 over 150ms.
+                  Cards that link somewhere use the interactive variant: elevation rises
+                  softly to e2 over 150ms.
                 </p>
               </CardContent>
             </Card>
@@ -255,7 +255,7 @@ export function ComponentsCoreChapter() {
           a11y={[
             "Linked cards wrap content in a single <a> — one tab stop per card.",
             "Card titles keep the page heading hierarchy (h3/h4), whatever the visual size.",
-            "Hover elevation is accompanied by a border-color change for low-vision users.",
+            "Hover elevation pairs with a title color change so feedback isn’t shadow-only.",
           ]}
         />
       </Topic>

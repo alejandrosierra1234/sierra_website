@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 const contrastPairs = [
   { fg: "ink #0B0B0B", bg: "paper #FFFFFF", ratio: "19.7 : 1", grade: "AAA", use: "Body text" },
   { fg: "neutral-600 #565656", bg: "paper #FFFFFF", ratio: "7.3 : 1", grade: "AAA", use: "Secondary text" },
+  { fg: "neutral-500 #737373", bg: "paper #FFFFFF", ratio: "4.7 : 1", grade: "AA", use: "Eyebrows, captions, metadata" },
   { fg: "teal-700 #007D73", bg: "paper #FFFFFF", ratio: "5.0 : 1", grade: "AA", use: "Links, accents, focus ring" },
   { fg: "paper #FFFFFF", bg: "neutral-900 #171717", ratio: "17.6 : 1", grade: "AAA", use: "Dark section headings" },
   { fg: "neutral-300 #D4D4D4", bg: "neutral-900 #171717", ratio: "11.7 : 1", grade: "AAA", use: "Dark section body" },
@@ -59,8 +60,8 @@ export function AccessibilityChapter() {
           </TBody>
         </Table>
         <p className="max-w-2xl text-sm leading-relaxed text-neutral-600">
-          Neutrals lighter than 600 never carry text on paper. Placeholder text (neutral-400) is
-          always an example, never information.
+          Neutral-500 is the lightest text on paper (4.7:1) and is reserved for supporting labels.
+          Placeholder text (neutral-400) is always an example, never information.
         </p>
       </Topic>
 
@@ -99,7 +100,7 @@ export function AccessibilityChapter() {
             <input
               aria-label="Sample input"
               placeholder="Sample input"
-              className="h-10 rounded-sm border border-neutral-300 bg-surface px-3 text-base placeholder:text-neutral-400 focus-visible:border-transparent focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-teal-700"
+              className="h-11 rounded-md border border-neutral-200 bg-surface px-3.5 text-base placeholder:text-neutral-400 focus-visible:border-transparent focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-teal-700"
             />
           </div>
         </div>

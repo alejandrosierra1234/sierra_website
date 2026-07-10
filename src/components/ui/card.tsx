@@ -13,9 +13,8 @@ export function Card({
   return (
     <div
       className={cn(
-        "rounded-md border border-neutral-200 bg-surface shadow-e1",
-        interactive &&
-          "transition-shadow duration-150 ease-precise hover:shadow-e2 hover:border-neutral-300",
+        "rounded-lg bg-surface shadow-e1",
+        interactive && "transition-shadow duration-150 ease-precise hover:shadow-e2",
         className,
       )}
     >
@@ -42,7 +41,7 @@ export function CardContent({ className, children }: { className?: string; child
 
 export function CardFooter({ className, children }: { className?: string; children: React.ReactNode }) {
   return (
-    <div className={cn("flex items-center gap-3 border-t border-neutral-200 px-6 py-4", className)}>
+    <div className={cn("flex items-center gap-3 border-t border-neutral-100 px-6 py-4", className)}>
       {children}
     </div>
   );

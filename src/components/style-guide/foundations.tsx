@@ -18,6 +18,7 @@ import {
   tealColors,
   extendedColors,
   semanticColors,
+  colorRoles,
   typeScale,
   spacingScale,
   breakpoints,
@@ -87,14 +88,25 @@ export function FoundationsChapter() {
             })}
           </div>
         </div>
+        <div>
+          <h4 className="font-mono text-xs font-medium tracking-[0.14em] text-neutral-600 uppercase">Color roles</h4>
+          <div className="mt-3 grid gap-3 lg:grid-cols-2">
+            {colorRoles.map((r) => (
+              <div key={r.role} className="rounded-lg bg-neutral-50 p-5">
+                <p className="text-sm font-semibold">{r.role}</p>
+                <p className="mt-1.5 text-sm leading-relaxed text-neutral-600">{r.rule}</p>
+              </div>
+            ))}
+          </div>
+        </div>
         <p className="max-w-2xl text-sm leading-relaxed text-neutral-600">
           Rules: <strong className="text-ink">teal-700</strong> is the accent for text, links and
           focus on light surfaces (AA at 5.0:1); <strong className="text-ink">teal-500</strong> —
           the brand teal — carries accents on dark surfaces and large graphic moments.
           Mid-scale brights (teal-500, green-500, red-500…) are never used for small text.
-          The extended palette is reserved for data visualization and category coding; UI status
-          always goes through the semantic tokens. The logo teal (<strong className="text-ink">mark
-          #59A29E</strong>) belongs to the isotype alone.
+          Restraint is the discipline: most screens are white, gray and ink, with one accent
+          moment. The logo teal (<strong className="text-ink">mark #59A29E</strong>) belongs to
+          the isotype alone.
         </p>
       </Topic>
 
@@ -215,19 +227,20 @@ export function FoundationsChapter() {
       <Topic
         id="radius"
         title="Radius"
-        lede="Small and deliberate — machined edges, not soft blobs. Radius grows with element size."
+        lede="Soft and continuous, growing with element size. Interactive elements — buttons, badges, pagination — are always pills; surfaces are generously rounded."
       >
         <Demo>
           <div className="flex flex-wrap items-end gap-8">
             {[
-              { label: "xs · 2px", cls: "rounded-xs size-16" },
-              { label: "sm · 4px", cls: "rounded-sm size-20" },
-              { label: "md · 8px", cls: "rounded-md size-24" },
-              { label: "lg · 12px", cls: "rounded-lg size-28" },
-              { label: "full", cls: "rounded-full size-16" },
+              { label: "xs · 4px", cls: "rounded-xs size-16" },
+              { label: "sm · 8px", cls: "rounded-sm size-20" },
+              { label: "md · 12px", cls: "rounded-md size-24" },
+              { label: "lg · 16px", cls: "rounded-lg size-28" },
+              { label: "xl · 24px", cls: "rounded-xl size-32" },
+              { label: "full", cls: "rounded-full h-10 w-24" },
             ].map((r) => (
               <div key={r.label} className="flex flex-col items-center gap-2">
-                <div className={`${r.cls} border border-neutral-300 bg-neutral-100`} />
+                <div className={`${r.cls} bg-surface shadow-e1`} />
                 <p className="font-mono text-xs text-neutral-500">{r.label}</p>
               </div>
             ))}
@@ -238,7 +251,7 @@ export function FoundationsChapter() {
       <Topic
         id="elevation"
         title="Shadows & elevation"
-        lede="Four levels. Elevation communicates interaction hierarchy — it is never applied for looks. Most of the site lives at e0 (flat) and e1."
+        lede="Four levels, soft and diffuse — elevation replaces borders. Surfaces separate through light and space, never through outlines; hairlines survive only inside data tables."
       >
         <Demo>
           <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">

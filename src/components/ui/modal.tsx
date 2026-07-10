@@ -44,8 +44,8 @@ export function Modal({
       }}
       aria-labelledby="modal-title"
       className={cn(
-        "m-auto w-[calc(100vw-2rem)] max-w-lg rounded-md bg-surface p-0 shadow-e4",
-        "backdrop:bg-ink/55 open:animate-modal-in",
+        "m-auto w-[calc(100vw-2rem)] max-w-lg rounded-lg bg-surface p-0 shadow-e4",
+        "open:animate-modal-in",
         className,
       )}
     >

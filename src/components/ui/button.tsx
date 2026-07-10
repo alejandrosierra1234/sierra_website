@@ -7,17 +7,16 @@ export type ButtonSize = "sm" | "md" | "lg";
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary: "bg-ink text-paper hover:bg-neutral-800 active:bg-neutral-950",
-  secondary:
-    "border border-neutral-300 bg-transparent text-ink hover:border-neutral-500 hover:bg-neutral-50 active:bg-neutral-100",
+  secondary: "bg-neutral-100 text-ink hover:bg-neutral-200 active:bg-neutral-300",
   ghost: "bg-transparent text-ink hover:bg-neutral-100 active:bg-neutral-200",
   inverse: "bg-paper text-ink hover:bg-neutral-100 active:bg-neutral-200",
   destructive: "bg-danger text-paper hover:bg-danger-strong active:bg-danger-strong",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  sm: "h-8 px-3 text-sm gap-1.5",
-  md: "h-10 px-4 text-sm gap-2",
-  lg: "h-12 px-6 text-base gap-2",
+  sm: "h-8 px-4 text-sm gap-1.5",
+  md: "h-10 px-5 text-sm gap-2",
+  lg: "h-12 px-7 text-base gap-2",
 };
 
 type CommonProps = {
@@ -51,7 +50,7 @@ export function Button(props: ButtonProps) {
   } = props;
 
   const classes = cn(
-    "inline-flex items-center justify-center rounded-sm font-medium whitespace-nowrap select-none",
+    "inline-flex items-center justify-center rounded-full font-medium whitespace-nowrap select-none",
     "transition-colors duration-150 ease-precise",
     "disabled:pointer-events-none disabled:opacity-40",
     variantClasses[variant],

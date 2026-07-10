@@ -39,8 +39,8 @@ export function Drawer({
       }}
       aria-labelledby="drawer-title"
       className={cn(
-        "fixed top-0 right-0 bottom-0 m-0 ml-auto h-dvh max-h-none w-80 max-w-[85vw] bg-surface p-0 shadow-e4",
-        "backdrop:bg-ink/55 open:animate-drawer-in",
+        "fixed top-0 right-0 bottom-0 m-0 ml-auto h-dvh max-h-none w-80 max-w-[85vw] rounded-l-lg bg-surface p-0 shadow-e4",
+        "open:animate-drawer-in",
         className,
       )}
     >

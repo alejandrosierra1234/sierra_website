@@ -23,7 +23,7 @@ export function CTABlock({
   className?: string;
 }) {
   return (
-    <div className={cn("rounded-lg bg-neutral-900 px-8 py-12 text-paper lg:px-16 lg:py-16", className)}>
+    <div className={cn("rounded-xl bg-neutral-900 px-8 py-12 text-paper lg:px-16 lg:py-16", className)}>
       <div className="flex flex-col items-start gap-8 lg:flex-row lg:items-center lg:justify-between">
         <div className="max-w-xl">
           <h2 className="text-3xl font-semibold tracking-tight text-balance lg:text-4xl">{title}</h2>

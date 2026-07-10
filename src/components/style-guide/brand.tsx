@@ -133,7 +133,7 @@ export function BrandChapter() {
             </h4>
             <ul className="mt-3 flex flex-col gap-2 text-sm leading-relaxed text-neutral-700">
               <li>Structure from the grid, not from boxes: prefer whitespace over containers.</li>
-              <li>Hairline rules (1px, neutral-200) to separate; shadows only for true elevation.</li>
+              <li>Separation through light and space — soft shadows and quiet fills, never outlines.</li>
               <li>Mono-spaced type for anything technical: specs, labels, figures, eyebrows.</li>
               <li>Icons are functional wayfinding, never decoration.</li>
             </ul>

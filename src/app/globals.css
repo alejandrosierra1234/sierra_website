@@ -89,17 +89,18 @@
   --text-display--line-height: 1.02;
   --text-display--letter-spacing: -0.02em;
 
-  /* ---- Radius (industrial: small, deliberate) ---- */
-  --radius-xs: 2px;
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
+  /* ---- Radius (soft, continuous; grows with element size) ---- */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
 
-  /* ---- Shadows / Elevation ---- */
-  --shadow-e1: 0 1px 2px rgb(11 11 11 / 0.06);
-  --shadow-e2: 0 2px 8px rgb(11 11 11 / 0.08);
-  --shadow-e3: 0 8px 24px rgb(11 11 11 / 0.12);
-  --shadow-e4: 0 24px 64px rgb(11 11 11 / 0.18);
+  /* ---- Shadows / Elevation (soft, diffuse — no hard edges) ---- */
+  --shadow-e1: 0 1px 2px rgb(11 11 11 / 0.04), 0 2px 8px rgb(11 11 11 / 0.04);
+  --shadow-e2: 0 2px 4px rgb(11 11 11 / 0.04), 0 8px 24px rgb(11 11 11 / 0.06);
+  --shadow-e3: 0 4px 8px rgb(11 11 11 / 0.05), 0 16px 40px rgb(11 11 11 / 0.10);
+  --shadow-e4: 0 8px 16px rgb(11 11 11 / 0.06), 0 32px 80px rgb(11 11 11 / 0.16);
 
   /* ---- Motion ---- */
   --ease-precise: cubic-bezier(0.2, 0, 0, 1);
@@ -174,7 +175,8 @@
     outline-offset: 2px;
   }
   dialog::backdrop {
-    background: rgb(11 11 11 / 0.55);
+    background: rgb(11 11 11 / 0.4);
+    backdrop-filter: blur(8px);
   }
   @media (prefers-reduced-motion: reduce) {
     *,
@@ -202,14 +204,15 @@
     }
   }
 
-  /* Eyebrow label: technical, quiet, always paired with a heading */
+  /* Eyebrow label: technical, quiet, always paired with a heading.
+     Neutral by default — color is reserved for content, not labels. */
   .eyebrow {
     font-family: var(--font-mono);
     font-size: 0.75rem;
     font-weight: 500;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--color-teal-700);
+    color: var(--color-neutral-500);
   }
 
   /* Placeholder surface for product imagery (photography direction stand-in) */

@@ -49,7 +49,7 @@ export function Field({
 }
 
 const controlBase = cn(
-  "w-full rounded-sm border border-neutral-300 bg-surface text-base text-ink placeholder:text-neutral-400",
+  "w-full rounded-md border border-neutral-200 bg-surface text-base text-ink placeholder:text-neutral-400",
   "transition-colors duration-150 ease-precise hover:border-neutral-400",
   "focus-visible:outline-2 focus-visible:outline-offset-0 focus-visible:outline-teal-700 focus-visible:border-transparent",
   "disabled:cursor-not-allowed disabled:bg-neutral-50 disabled:text-neutral-400",
@@ -65,7 +65,7 @@ export function Input({
     <input
       {...props}
       aria-invalid={invalid || undefined}
-      className={cn(controlBase, "h-10 px-3", className)}
+      className={cn(controlBase, "h-11 px-3.5", className)}
     />
   );
 }
@@ -79,7 +79,7 @@ export function Textarea({
     <textarea
       {...props}
       aria-invalid={invalid || undefined}
-      className={cn(controlBase, "min-h-24 px-3 py-2", className)}
+      className={cn(controlBase, "min-h-24 px-3.5 py-2.5", className)}
     />
   );
 }
@@ -95,7 +95,7 @@ export function Select({
       <select
         {...props}
         aria-invalid={invalid || undefined}
-        className={cn(controlBase, "h-10 appearance-none pr-9 pl-3", className)}
+        className={cn(controlBase, "h-11 appearance-none pr-9 pl-3.5", className)}
       >
         {children}
       </select>

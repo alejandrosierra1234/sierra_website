@@ -23,8 +23,8 @@ export function DownloadCard({
       href={href}
       download
       className={cn(
-        "group flex items-center gap-4 rounded-md border border-neutral-200 bg-surface p-4 shadow-e1",
-        "transition-shadow duration-150 ease-precise hover:border-neutral-300 hover:shadow-e2",
+        "group flex items-center gap-4 rounded-lg bg-surface p-4 shadow-e1",
+        "transition-shadow duration-150 ease-precise hover:shadow-e2",
         className,
       )}
     >

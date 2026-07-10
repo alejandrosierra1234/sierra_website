@@ -23,8 +23,8 @@ export function ProductCard({
     <Link
       href={href}
       className={cn(
-        "group block overflow-hidden rounded-md border border-neutral-200 bg-surface shadow-e1",
-        "transition-shadow duration-150 ease-precise hover:border-neutral-300 hover:shadow-e2",
+        "group block overflow-hidden rounded-lg bg-surface shadow-e1",
+        "transition-shadow duration-150 ease-precise hover:shadow-e2",
         className,
       )}
     >

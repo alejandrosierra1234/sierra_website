@@ -25,7 +25,7 @@ export function Pagination({
   className?: string;
 }) {
   const itemBase = cn(
-    "inline-flex size-9 items-center justify-center rounded-sm text-sm font-medium",
+    "inline-flex size-9 items-center justify-center rounded-full text-sm font-medium",
     "transition-colors duration-150 ease-precise",
     "disabled:pointer-events-none disabled:opacity-40",
   );
