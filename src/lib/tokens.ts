@@ -148,6 +148,6 @@ export const breakpoints = [
   { token: "sm", value: "640px", use: "Large phones. 4-col grid becomes 8." },
   { token: "md", value: "768px", use: "Tablets. Two-column layouts activate." },
   { token: "lg", value: "1024px", use: "Desktop. Full 12-col grid, desktop nav." },
-  { token: "xl", value: "1280px", use: "Wide desktop. Container maxes at 1216px." },
+  { token: "xl", value: "1280px", use: "Wide desktop. Container maxes at 1280px." },
   { token: "2xl", value: "1536px", use: "No new layout — whitespace grows." },
 ];

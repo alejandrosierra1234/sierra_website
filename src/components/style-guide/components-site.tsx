@@ -9,6 +9,8 @@ import { Drawer } from "@/components/ui/drawer";
 import { Field, Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/input";
 import { Navbar } from "@/components/site/navbar";
+import { MegaMenu } from "@/components/site/mega-menu";
+import { navItems } from "@/lib/mega-menu-data";
 import { Footer } from "@/components/site/footer";
 import { Hero } from "@/components/site/hero";
 import { Section } from "@/components/site/section";
@@ -82,23 +84,51 @@ export function ComponentsSiteChapter() {
       <Topic
         id="navigation"
         title="Navigation"
-        lede="A quiet sticky header: wordmark, a Products disclosure, four destinations, one project CTA. Below lg, everything collapses into the drawer."
+        lede="A 72px header: wordmark, six mega-menu triggers, search, Contact and the primary CTA. Below lg, everything collapses into an accordion drawer — never a mega menu on mobile."
       >
-        <Demo tone="bare" label="Live navbar (non-sticky in this demo). Click or hover Products; resize for the mobile drawer.">
+        <Demo tone="bare" clip={false} label="Live navbar (non-sticky in this demo). Hover or Tab to a link to open its menu; resize below lg for the mobile drawer.">
           <Navbar sticky={false} />
         </Demo>
         <Guidelines
           usage={[
-            "Products is the only dropdown — it groups the four material categories (Fiber, Yarn, Fabric, Chemicals) that don’t fit as flat links.",
-            "Maximum four flat destinations plus the Products group and one CTA — restraint keeps the bar calm.",
+            "Six top-level destinations, every one a mega menu — no flat links compete with them for attention.",
+            "The header spans 1440px max; its content (wordmark, nav, actions) holds to the same 1280px measure as every page section, so everything aligns.",
+            "Search, Contact and the primary CTA sit right of a visual gap from the nav — utility actions, not destinations.",
             "The wordmark always returns home; no logo taglines in the bar.",
-            "The bar is 64px tall, paper at 80% opacity with backdrop blur when sticky.",
           ]}
           a11y={[
-            "Products follows the disclosure pattern (aria-expanded/aria-controls), not role=menu — its panel is plain nav content reachable by Tab.",
-            "Opens on click (works for touch and keyboard) with a hover-intent assist for pointer users; Escape closes and returns focus to the trigger.",
-            "Landmarks: <header> with <nav aria-label='Main'>; drawer nav is labeled 'Mobile'.",
+            "The whole header is one hover/focus region: leaving it closes any open menu immediately; hovering the CTAs inside it does not.",
+            "Opens on hover or keyboard focus — never requires a click; Escape closes and returns focus to the trigger.",
+            "Landmarks: <header> with <nav aria-label='Main'>; the drawer's nav is labeled 'Mobile'.",
             "The menu button carries aria-label and a 40px target; focus order matches visual order.",
+          ]}
+        />
+      </Topic>
+
+      <Topic
+        id="mega-menu"
+        title="Mega menu"
+        lede="The first few seconds of SIERRA. Every panel reads as an editorial spread — structured columns of destinations plus one curated feature — never a grid of decorative tiles."
+      >
+        <Demo tone="bare" clip={false} label="Anatomy — link columns (eyebrow + items) and the feature panel, shown open.">
+          {/* overflow-x-auto: the panel's width tracks the viewport, which can
+              exceed this narrower docs column — scroll here, never on the page. */}
+          <div className="flex justify-center overflow-x-auto bg-neutral-50 p-12">
+            <MegaMenu id="demo-mega-menu" data={navItems[1]} />
+          </div>
+        </Demo>
+        <Guidelines
+          usage={[
+            "Layout is a CSS grid: one flexible link column per category (200px minimum) plus one fixed 320px feature column — column count is data-driven, never hand-laid-out per menu.",
+            "Category eyebrows are optional — omit them when a menu has a single, self-evident list (Solutions, Industries).",
+            "The feature panel carries a real, audited statistic, a customer quote, or an announcement — never stock photography, never a placeholder.",
+            "Rest-state icons and arrows are quiet (neutral-400); hover only shifts background, contrast and a 2px arrow nudge — no scaling, no color, no bounce.",
+          ]}
+          a11y={[
+            "Panel is plain content (role=group, not role=menu) so every link keeps native semantics and stays in normal Tab order — a real WAI-ARIA APG concern: application menu roles are not meant for site navigation.",
+            "Motion respects prefers-reduced-motion — checked explicitly via Framer Motion's useReducedMotion(), since JS-driven animation isn't reached by the global CSS rule that covers every other component.",
+            "The panel opens on focus as much as hover, so keyboard-only users reach every destination without a pointer.",
+            "One shared panel swaps content between adjacent triggers instead of closing and reopening — quieter for screen magnifier and low-vision users tracking one fixed region.",
           ]}
         />
       </Topic>

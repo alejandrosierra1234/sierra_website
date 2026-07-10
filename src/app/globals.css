@@ -203,11 +203,12 @@
 }
 
 @layer components {
-  /* Page container: 12-col grid lives inside this measure */
+  /* Page container: 12-col grid lives inside this measure. 1280px matches
+     the navbar's own content width so every section aligns under it. */
   .container-page {
     margin-inline: auto;
     width: 100%;
-    max-width: 76rem;
+    max-width: 80rem;
     padding-inline: 1.5rem;
   }
   @media (min-width: 1024px) {

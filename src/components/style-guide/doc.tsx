@@ -54,11 +54,16 @@ export function Topic({
 export function Demo({
   label,
   tone = "default",
+  /** Set false when the demo's own content must overflow the canvas
+   *  (e.g. a mega menu panel) — never combine overflow-hidden and
+   *  overflow-visible in one className string, so this is a real prop. */
+  clip = true,
   className,
   children,
 }: {
   label?: string;
   tone?: "default" | "dark" | "bare";
+  clip?: boolean;
   className?: string;
   children: React.ReactNode;
 }) {
@@ -69,7 +74,7 @@ export function Demo({
           "rounded-lg",
           tone === "default" && "bg-neutral-50 p-8",
           tone === "dark" && "bg-neutral-900 p-8",
-          tone === "bare" && "overflow-hidden bg-surface shadow-e1",
+          tone === "bare" && cn("bg-surface shadow-e1", clip && "overflow-hidden"),
           className,
         )}
       >

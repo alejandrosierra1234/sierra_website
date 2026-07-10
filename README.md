@@ -28,6 +28,7 @@ It is the single source of truth for every design and development decision:
 - [Next.js](https://nextjs.org) (App Router) + React + TypeScript
 - [Tailwind CSS v4](https://tailwindcss.com) — tokens as CSS variables via `@theme`
 - Replica (headings) + Aeonik (body/UI) + Replica Mono (technical), all self-hosted brand typefaces / Lucide icons
+- [Framer Motion](https://www.framer.com/motion/) — the mega menu's panel transition only; everything else animates via CSS tokens
 
 ## Structure
 

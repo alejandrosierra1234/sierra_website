@@ -165,7 +165,7 @@ export function FoundationsChapter() {
       <Topic
         id="grid"
         title="Grid"
-        lede="A 12-column fluid grid inside a 1216px container with 24px gutters. Columns merge to 8 below lg and 4 below sm."
+        lede="A 12-column fluid grid inside a 1280px container with 24px gutters — matching the navbar's own content width so every section aligns under it. Columns merge to 8 below lg and 4 below sm."
       >
         <Demo tone="bare">
           <div className="p-6">
@@ -182,7 +182,7 @@ export function FoundationsChapter() {
               ))}
             </div>
             <p className="mt-3 font-mono text-xs text-neutral-500">
-              container-page · max-width 1216px · padding 24px (32px ≥ lg)
+              container-page · max-width 1280px · padding 24px (32px ≥ lg)
             </p>
           </div>
         </Demo>

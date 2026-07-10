@@ -53,7 +53,7 @@ export default function StyleGuidePage() {
             <dl className="mt-14 grid grid-cols-2 gap-8 border-t border-neutral-200 pt-8 lg:grid-cols-4">
               {[
                 { value: "60+", label: "Documented tokens" },
-                { value: "20", label: "Production components" },
+                { value: "25", label: "Production components" },
                 { value: "11", label: "Layout patterns" },
                 { value: "AA", label: "WCAG 2.2 floor" },
               ].map((stat) => (
