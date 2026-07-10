@@ -93,9 +93,14 @@ export function TokensChapter() {
           </THead>
           <TBody>
             <Tr>
+              <Td className="font-mono text-xs">--font-display</Td>
+              <Td className="font-mono text-xs">Replica, Aeonik</Td>
+              <Td className="text-neutral-600">Display and headings (h1–h6)</Td>
+            </Tr>
+            <Tr>
               <Td className="font-mono text-xs">--font-sans</Td>
-              <Td className="font-mono text-xs">Replica, system-ui</Td>
-              <Td className="text-neutral-600">All reading and UI text</Td>
+              <Td className="font-mono text-xs">Aeonik, system-ui</Td>
+              <Td className="text-neutral-600">Body and UI text</Td>
             </Tr>
             <Tr>
               <Td className="font-mono text-xs">--font-mono</Td>

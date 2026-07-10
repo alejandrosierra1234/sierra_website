@@ -113,7 +113,7 @@ export function BrandChapter() {
       <Topic
         id="visual-language"
         title="Visual language"
-        lede="Clean white space, engineering grays, and SIERRA teal as the single accent — anchored by the Replica typeface and the interlocking-rhombus mark. Photography does the emotional work; the UI stays quiet."
+        lede="Clean white space, engineering grays, and SIERRA teal as the single accent — anchored by Replica headlines, Aeonik text, and the interlocking-rhombus mark. Photography does the emotional work; the UI stays quiet."
       >
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="rounded-md bg-neutral-50 p-6">

@@ -63,15 +63,15 @@ export const semanticColors: ColorToken[] = [
 ];
 
 export const typeScale = [
-  { name: "display", cls: "text-display", size: "clamp(44→68px)", lh: "1.02", use: "Hero headlines only. One per page." },
-  { name: "4xl", cls: "text-4xl", size: "36px", lh: "1.1", use: "Page titles (H1)" },
-  { name: "3xl", cls: "text-3xl", size: "30px", lh: "1.2", use: "Section titles (H2)" },
-  { name: "2xl", cls: "text-2xl", size: "24px", lh: "1.25", use: "Sub-section titles (H3)" },
-  { name: "xl", cls: "text-xl", size: "20px", lh: "1.4", use: "Card titles (H4), ledes" },
-  { name: "lg", cls: "text-lg", size: "18px", lh: "1.55", use: "Intro paragraphs" },
-  { name: "base", cls: "text-base", size: "16px", lh: "1.6", use: "Body copy. The default." },
-  { name: "sm", cls: "text-sm", size: "14px", lh: "1.5", use: "UI labels, secondary copy, table cells" },
-  { name: "xs", cls: "text-xs", size: "12px", lh: "1.4", use: "Captions, badges, eyebrows (mono)" },
+  { name: "display", cls: "text-display", size: "clamp(44→68px)", lh: "1.02", family: "Replica", use: "Hero headlines only. One per page." },
+  { name: "4xl", cls: "text-4xl", size: "36px", lh: "1.1", family: "Replica", use: "Page titles (H1)" },
+  { name: "3xl", cls: "text-3xl", size: "30px", lh: "1.2", family: "Replica", use: "Section titles (H2)" },
+  { name: "2xl", cls: "text-2xl", size: "24px", lh: "1.25", family: "Replica", use: "Sub-section titles (H3)" },
+  { name: "xl", cls: "text-xl", size: "20px", lh: "1.4", family: "Replica", use: "Card titles (H4), ledes" },
+  { name: "lg", cls: "text-lg", size: "18px", lh: "1.55", family: "Aeonik", use: "Intro paragraphs" },
+  { name: "base", cls: "text-base", size: "16px", lh: "1.6", family: "Aeonik", use: "Body copy. The default." },
+  { name: "sm", cls: "text-sm", size: "14px", lh: "1.5", family: "Aeonik", use: "UI labels, secondary copy, table cells" },
+  { name: "xs", cls: "text-xs", size: "12px", lh: "1.4", family: "Aeonik", use: "Captions, badges, eyebrows (mono)" },
 ];
 
 export const spacingScale = [

@@ -101,7 +101,7 @@ export function FoundationsChapter() {
       <Topic
         id="typography"
         title="Typography"
-        lede="Replica — the SIERRA brand typeface — for everything human; Geist Mono for everything technical: specs, figures, labels, code. Two families, one system."
+        lede="Three families with fixed roles: Replica for display and headings, Aeonik for body and UI, Geist Mono for everything technical — specs, figures, labels, code."
       >
         <Demo tone="bare">
           <div className="flex flex-col divide-y divide-neutral-100">
@@ -110,10 +110,16 @@ export function FoundationsChapter() {
                 <div className="w-40 shrink-0 font-mono text-xs text-neutral-500">
                   {t.name} · {t.size} / {t.lh}
                 </div>
-                <p className={`${t.cls} min-w-0 truncate font-medium tracking-tight`}>
+                <p
+                  className={`${t.cls} min-w-0 truncate tracking-tight ${
+                    t.family === "Replica" ? "font-display font-semibold" : "font-medium"
+                  }`}
+                >
                   Fiber to finished product
                 </p>
-                <p className="text-xs text-neutral-500 sm:ml-auto sm:w-44 sm:shrink-0 sm:text-right">{t.use}</p>
+                <p className="text-xs text-neutral-500 sm:ml-auto sm:w-44 sm:shrink-0 sm:text-right">
+                  {t.family} · {t.use}
+                </p>
               </div>
             ))}
           </div>
@@ -136,10 +142,11 @@ export function FoundationsChapter() {
         </Demo>
         <p className="max-w-2xl text-sm leading-relaxed text-neutral-600">
           Body copy is 16px/1.6 with a 65–75 character measure. Headings use tight tracking
-          (−1% to −2%) and text-balance. Replica ships in three cuts: Light 300 (large display
-          accents only), Regular 400 (body and UI — also serves the 500 range), and Bold 700
-          (headings and emphasis — also serves 600). Weights are mapped so nothing is ever
-          synthesized by the browser.
+          (−1% to −2%) and text-balance, and are always set in Replica — a base rule applies the
+          display face to every h1–h6. Approved weights: Replica Light 300 / Regular 400 /
+          Bold 700 (also serving 600); Aeonik Light 300 / Regular 400 / Medium 500 / Bold 700.
+          Aeonik Thin, Air and Black stay in the vault — they never appear in the UI. All weight
+          requests map to real cuts; the browser never synthesizes.
         </p>
       </Topic>
 
