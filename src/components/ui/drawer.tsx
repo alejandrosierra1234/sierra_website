@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useId, useRef } from "react";
 import { X } from "lucide-react";
 import { cn } from "@/lib/cn";
 
@@ -22,6 +22,9 @@ export function Drawer({
   children: React.ReactNode;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
+  // useId, not a static string — a page can render more than one Drawer
+  // (the Style Guide does), and duplicate ids break aria-labelledby.
+  const titleId = useId();
 
   useEffect(() => {
     const dialog = ref.current;
@@ -37,7 +40,7 @@ export function Drawer({
       onClick={(e) => {
         if (e.target === ref.current) onClose();
       }}
-      aria-labelledby="drawer-title"
+      aria-labelledby={titleId}
       className={cn(
         "fixed top-0 right-0 bottom-0 m-0 ml-auto h-dvh max-h-none w-80 max-w-[85vw] rounded-l-lg bg-surface p-0 shadow-e4",
         "open:animate-drawer-in",
@@ -46,7 +49,7 @@ export function Drawer({
     >
       <div className="flex h-full flex-col">
         <div className="flex items-center justify-between border-b border-neutral-200 px-6 py-4">
-          <h2 id="drawer-title" className="text-base font-semibold tracking-tight">
+          <h2 id={titleId} className="text-base font-semibold tracking-tight">
             {title}
           </h2>
           <button

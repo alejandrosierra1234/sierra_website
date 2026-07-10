@@ -9,7 +9,7 @@ import { Drawer } from "@/components/ui/drawer";
 import { Logo } from "@/components/site/logo";
 import { MegaMenu } from "@/components/site/mega-menu";
 import { MobileMenu } from "@/components/site/mobile-menu";
-import { SearchModal } from "@/components/site/search-modal";
+import { SpotlightSearch } from "@/components/site/spotlight-search";
 import { navItems, type NavItemData } from "@/lib/mega-menu-data";
 import { cn } from "@/lib/cn";
 
@@ -24,10 +24,19 @@ export function Wordmark({ className }: { className?: string }) {
 export function Navbar({
   sticky = true,
   items = navItems,
+  enableShortcuts = true,
 }: {
   /** Set false when embedding in documentation demos. */
   sticky?: boolean;
   items?: NavItemData[];
+  /**
+   * The ⌘K / Ctrl+K global shortcut. Default true — a real page only ever
+   * mounts one Navbar. Set false on any extra live demo instance (e.g. in
+   * the Style Guide, which embeds several) so their shortcuts don't fight
+   * over the same keystroke; each demo's Search button still opens its
+   * own Spotlight on click regardless.
+   */
+  enableShortcuts?: boolean;
 }) {
   const [activeKey, setActiveKey] = useState<string | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -38,9 +47,11 @@ export function Navbar({
 
   const close = () => setActiveKey(null);
 
-  // Escape closes the open mega menu and returns focus to its trigger.
+  // Escape closes the open mega menu and returns focus to its trigger —
+  // but only when Spotlight isn't the thing on top; it handles its own
+  // Escape and this listener would otherwise fire alongside it.
   useEffect(() => {
-    if (!activeKey) return;
+    if (!activeKey || searchOpen) return;
     function onKey(e: KeyboardEvent) {
       if (e.key === "Escape") {
         close();
@@ -49,7 +60,20 @@ export function Navbar({
     }
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, [activeKey]);
+  }, [activeKey, searchOpen]);
+
+  // ⌘K / Ctrl+K opens Spotlight from anywhere on the page.
+  useEffect(() => {
+    if (!enableShortcuts) return;
+    function onKey(e: KeyboardEvent) {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setSearchOpen(true);
+      }
+    }
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [enableShortcuts]);
 
   const activeItem = items.find((item) => item.key === activeKey) ?? null;
 
@@ -101,11 +125,12 @@ export function Navbar({
         <div className="flex items-center gap-1">
           <button
             type="button"
-            aria-label="Search"
             onClick={() => setSearchOpen(true)}
-            className="hidden rounded-full p-2.5 text-neutral-600 transition-colors duration-150 ease-precise hover:bg-neutral-100 hover:text-ink lg:inline-flex"
+            className="hidden items-center gap-2 rounded-full py-2 pr-1.5 pl-3 text-sm text-neutral-500 transition-colors duration-150 ease-precise hover:bg-neutral-100 hover:text-ink lg:inline-flex"
           >
             <Search aria-hidden className="size-4" />
+            <span className="sr-only">Search</span>
+            <kbd className="rounded-xs bg-neutral-100 px-1.5 py-0.5 font-mono text-xs text-neutral-500">⌘K</kbd>
           </button>
           <Link
             href="#"
@@ -150,7 +175,7 @@ export function Navbar({
         </div>
       </Drawer>
 
-      <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
+      <SpotlightSearch open={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   );
 }

@@ -35,9 +35,11 @@ function MobileNavGroup({ item, onNavigate }: { item: NavItemData; onNavigate: (
                 key={link.label}
                 href={link.href}
                 onClick={onNavigate}
-                className="flex items-center gap-3 rounded-sm px-3 py-2 text-sm text-neutral-700 transition-colors duration-150 hover:bg-neutral-100 hover:text-ink"
+                className="flex items-center gap-3 rounded-md px-3 py-2 text-sm text-neutral-700 transition-colors duration-150 hover:bg-neutral-100 hover:text-ink"
               >
-                <Icon aria-hidden strokeWidth={1.5} className="size-4 shrink-0 text-neutral-400" />
+                <span className="flex size-8 shrink-0 items-center justify-center rounded-md bg-teal-50 text-teal-700">
+                  <Icon aria-hidden strokeWidth={1.75} className="size-4" />
+                </span>
                 {link.label}
               </Link>
             );

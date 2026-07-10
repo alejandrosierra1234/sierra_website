@@ -18,6 +18,7 @@ const contrastPairs = [
 const keyboardMap = [
   { component: "Buttons & links", keys: "Tab · Enter (Space for buttons)" },
   { component: "Mega menu", keys: "Opens on Tab focus or hover · Esc closes and refocuses trigger" },
+  { component: "Spotlight search", keys: "⌘K/Ctrl+K opens · ↑/↓ moves · Enter selects · Esc closes" },
   { component: "Navigation drawer", keys: "Esc closes · focus trapped while open" },
   { component: "Tabs", keys: "←/→ move · Home/End jump · panel is focusable" },
   { component: "Accordion", keys: "Tab between headers · Enter/Space toggles" },

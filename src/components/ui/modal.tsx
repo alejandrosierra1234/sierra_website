@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useId, useRef } from "react";
 import { X } from "lucide-react";
 import { cn } from "@/lib/cn";
 
@@ -26,6 +26,9 @@ export function Modal({
   children?: React.ReactNode;
 }) {
   const ref = useRef<HTMLDialogElement>(null);
+  // useId, not a static string — a page can render more than one Modal,
+  // and duplicate ids break aria-labelledby.
+  const titleId = useId();
 
   useEffect(() => {
     const dialog = ref.current;
@@ -42,7 +45,7 @@ export function Modal({
         // Click on the backdrop (the dialog element itself) dismisses.
         if (e.target === ref.current) onClose();
       }}
-      aria-labelledby="modal-title"
+      aria-labelledby={titleId}
       className={cn(
         "m-auto w-[calc(100vw-2rem)] max-w-lg rounded-lg bg-surface p-0 shadow-e4",
         "open:animate-modal-in",
@@ -51,7 +54,7 @@ export function Modal({
     >
       <div className="flex items-start justify-between gap-4 p-6 pb-0">
         <div>
-          <h2 id="modal-title" className="text-lg font-semibold tracking-tight">
+          <h2 id={titleId} className="text-lg font-semibold tracking-tight">
             {title}
           </h2>
           {description && <p className="mt-1 text-sm text-neutral-600">{description}</p>}

@@ -10,6 +10,7 @@ import { Field, Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/input";
 import { Navbar } from "@/components/site/navbar";
 import { MegaMenu } from "@/components/site/mega-menu";
+import { SpotlightSearch } from "@/components/site/spotlight-search";
 import { navItems } from "@/lib/mega-menu-data";
 import { Footer } from "@/components/site/footer";
 import { Hero } from "@/components/site/hero";
@@ -18,6 +19,18 @@ import { CTABlock } from "@/components/site/cta";
 import { ProductCard } from "@/components/site/product-card";
 import { IndustryCard } from "@/components/site/industry-card";
 import { DownloadCard } from "@/components/site/download-card";
+
+function SpotlightSearchDemo() {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Button variant="secondary" onClick={() => setOpen(true)}>
+        Open Spotlight (or press ⌘K / Ctrl+K anywhere)
+      </Button>
+      <SpotlightSearch open={open} onClose={() => setOpen(false)} />
+    </>
+  );
+}
 
 function ModalDemo() {
   const [open, setOpen] = useState(false);
@@ -87,7 +100,7 @@ export function ComponentsSiteChapter() {
         lede="A 72px header: wordmark, six mega-menu triggers, search, Contact and the primary CTA. Below lg, everything collapses into an accordion drawer — never a mega menu on mobile."
       >
         <Demo tone="bare" clip={false} label="Live navbar (non-sticky in this demo). Hover or Tab to a link to open its menu; resize below lg for the mobile drawer.">
-          <Navbar sticky={false} />
+          <Navbar sticky={false} enableShortcuts={false} />
         </Demo>
         <Guidelines
           usage={[
@@ -122,13 +135,37 @@ export function ComponentsSiteChapter() {
             "Layout is a CSS grid: one flexible link column per category (200px minimum) plus one fixed 320px feature column — column count is data-driven, never hand-laid-out per menu.",
             "Category eyebrows are optional — omit them when a menu has a single, self-evident list (Solutions, Industries).",
             "The feature panel carries a real, audited statistic, a customer quote, or an announcement — never stock photography, never a placeholder.",
-            "Rest-state icons and arrows are quiet (neutral-400); hover only shifts background, contrast and a 2px arrow nudge — no scaling, no color, no bounce.",
+            "Every item icon sits in the same soft teal chip — one recurring accent, never a rainbow of category colors; hover only lifts the row and chip background, no scaling or bounce.",
           ]}
           a11y={[
             "Panel is plain content (role=group, not role=menu) so every link keeps native semantics and stays in normal Tab order — a real WAI-ARIA APG concern: application menu roles are not meant for site navigation.",
             "Motion respects prefers-reduced-motion — checked explicitly via Framer Motion's useReducedMotion(), since JS-driven animation isn't reached by the global CSS rule that covers every other component.",
             "The panel opens on focus as much as hover, so keyboard-only users reach every destination without a pointer.",
             "One shared panel swaps content between adjacent triggers instead of closing and reopening — quieter for screen magnifier and low-vision users tracking one fixed region.",
+          ]}
+        />
+      </Topic>
+
+      <Topic
+        id="spotlight-search"
+        title="Spotlight search"
+        lede="A command palette, not a search page: anchored high on the screen, one large input, results directly beneath with no visual seam — the macOS Spotlight register."
+      >
+        <Demo label="Live — click below, or press ⌘K / Ctrl+K from anywhere on this page.">
+          <SpotlightSearchDemo />
+        </Demo>
+        <Guidelines
+          usage={[
+            "Opens from the Search trigger (which shows its own ⌘K hint) or the ⌘K / Ctrl+K shortcut, globally — not scoped to the navbar being visible.",
+            "Before a query, show a short curated Quick Links list — never a blank panel.",
+            "Item rows reuse the mega menu's teal icon chip, so search results and navigation read as one system.",
+            "Results cap at a scrollable ~320px so the palette never grows to dominate the screen.",
+          ]}
+          a11y={[
+            "Full roving keyboard control: ↑/↓ moves the active result, Enter navigates, Escape closes — in one press, including from inside the input.",
+            "Chromium's native type=search Escape-to-clear is intercepted so Escape always closes rather than needing two presses.",
+            "The input is a combobox (role, aria-expanded, aria-controls, aria-activedescendant) wired to the results listbox, so screen readers track the active item as arrow keys move it.",
+            "Built on the native <dialog> element for focus trapping, top-layer stacking and focus restoration on close.",
           ]}
         />
       </Topic>
