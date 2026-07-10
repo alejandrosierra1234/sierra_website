@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   SIERRA Design Tokens — single source of truth.
+   Every value used in the UI must trace back to a token defined here.
+   Documented at /style-guide. Update the Style Guide before changing.
+   ------------------------------------------------------------------ */
+
+@theme {
+  /* ---- Color · Surfaces & ink ---- */
+  --color-paper: #fbfaf8;
+  --color-surface: #ffffff;
+  --color-ink: #161513;
+
+  /* ---- Color · Warm neutrals (fiber scale) ---- */
+  --color-neutral-50: #f6f5f2;
+  --color-neutral-100: #eceae5;
+  --color-neutral-200: #ddd9d2;
+  --color-neutral-300: #c4bfb5;
+  --color-neutral-400: #a39d91;
+  --color-neutral-500: #857f73;
+  --color-neutral-600: #68635a;
+  --color-neutral-700: #504c45;
+  --color-neutral-800: #383530;
+  --color-neutral-900: #23211d;
+  --color-neutral-950: #161513;
+
+  /* ---- Color · Clay accent (single brand accent) ---- */
+  --color-clay-50: #fbf3ef;
+  --color-clay-100: #f5e2d8;
+  --color-clay-200: #eac3b0;
+  --color-clay-300: #dc9f82;
+  --color-clay-400: #cb7a54;
+  --color-clay-500: #b45e36;
+  --color-clay-600: #9a4b28;
+  --color-clay-700: #7c3c21;
+  --color-clay-800: #5e2e1a;
+  --color-clay-900: #402014;
+
+  /* ---- Color · Semantic ---- */
+  --color-success: #2e6b4f;
+  --color-warning: #8a5b12;
+  --color-danger: #a03232;
+
+  /* ---- Typography ---- */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", monospace;
+
+  --text-display: clamp(2.75rem, 2rem + 3vw, 4.25rem);
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.02em;
+
+  /* ---- Radius (industrial: small, deliberate) ---- */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* ---- Shadows / Elevation ---- */
+  --shadow-e1: 0 1px 2px rgb(22 21 19 / 0.06);
+  --shadow-e2: 0 2px 8px rgb(22 21 19 / 0.08);
+  --shadow-e3: 0 8px 24px rgb(22 21 19 / 0.12);
+  --shadow-e4: 0 24px 64px rgb(22 21 19 / 0.18);
+
+  /* ---- Motion ---- */
+  --ease-precise: cubic-bezier(0.2, 0, 0, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  --animate-fade-up: fade-up 0.5s var(--ease-precise) both;
+  --animate-drawer-in: drawer-in 0.3s var(--ease-precise) both;
+  --animate-modal-in: modal-in 0.2s var(--ease-precise) both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes drawer-in {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  @keyframes modal-in {
+    from {
+      opacity: 0;
+      transform: translateY(8px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+}
+
+/* Non-Tailwind tokens (z-index scale) */
+:root {
+  --z-nav: 40;
+  --z-overlay: 50;
+  --z-toast: 60;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background-color: var(--color-clay-200);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-clay-600);
+    outline-offset: 2px;
+  }
+  dialog::backdrop {
+    background: rgb(22 21 19 / 0.55);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Page container: 12-col grid lives inside this measure */
+  .container-page {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 76rem;
+    padding-inline: 1.5rem;
+  }
+  @media (min-width: 1024px) {
+    .container-page {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* Eyebrow label: technical, quiet, always paired with a heading */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-clay-600);
+  }
+
+  /* Placeholder surface for product imagery (photography direction stand-in) */
+  .swatch-weave {
+    background-color: var(--color-neutral-100);
+    background-image: repeating-linear-gradient(
+        45deg,
+        rgb(22 21 19 / 0.04) 0px,
+        rgb(22 21 19 / 0.04) 2px,
+        transparent 2px,
+        transparent 6px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        rgb(22 21 19 / 0.03) 0px,
+        rgb(22 21 19 / 0.03) 2px,
+        transparent 2px,
+        transparent 6px
+      );
+  }
+}
