@@ -103,7 +103,8 @@ export function Navbar({
       ref={headerRef}
       className={cn(
         "w-full border-b border-neutral-100 bg-paper/80 backdrop-blur-md",
-        sticky ? "sticky top-0 z-40" : "relative",
+        sticky ? "sticky top-0" : "relative",
+        menuOpen ? "z-50" : "z-40",
       )}
       onMouseLeave={close}
       onBlur={(e) => {
@@ -182,16 +183,16 @@ export function Navbar({
       {/* Mobile Full-Screen Menu Modal */}
       {menuOpen && (
         <>
-          {/* Backdrop - solid, blocks all interaction */}
+          {/* Backdrop - solid white, blocks all interaction with page */}
           <div
-            className="fixed inset-0 z-40 bg-paper lg:hidden"
+            className="fixed inset-0 bg-white lg:hidden"
             onClick={() => setMenuOpen(false)}
             aria-hidden="true"
           />
 
-          {/* Menu Container */}
+          {/* Menu Container - on top of backdrop */}
           <div
-            className="fixed inset-0 z-50 flex flex-col lg:hidden overflow-hidden"
+            className="fixed inset-0 flex flex-col lg:hidden overflow-hidden bg-white"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile menu"
