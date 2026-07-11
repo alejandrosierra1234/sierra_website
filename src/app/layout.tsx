@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -51,11 +51,14 @@ export const metadata: Metadata = {
   },
   description:
     "SIERRA is a fully vertical textile manufacturer: integrated capabilities, nearshore speed, and full traceability from fiber to finished product.",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    viewportFit: "cover",
-  },
+};
+
+// viewportFit: cover lets the mobile menu extend under the notch / home
+// indicator; the modal reads env(safe-area-inset-*) to stay clear of them.
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default function RootLayout({

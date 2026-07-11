@@ -170,11 +170,12 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    /* iOS: prevent highlight on tap */
-    -webkit-touch-callout: none;
-    /* iOS: prevent text selection on long press in certain contexts */
-    -webkit-user-select: none;
-    user-select: none;
+    /* A wide component (e.g. the live Navbar demo in the Style Guide) must
+       never turn into page-level horizontal scroll — which would let the
+       sticky header slide sideways and clip the wordmark. overflow-x: clip
+       contains it without creating a scroll container, so position: sticky
+       still resolves to the viewport (overflow-x: hidden would break it). */
+    overflow-x: clip;
   }
   /* Headings always set in the display face (Replica) */
   h1,
