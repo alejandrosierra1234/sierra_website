@@ -170,6 +170,11 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    /* iOS: prevent highlight on tap */
+    -webkit-touch-callout: none;
+    /* iOS: prevent text selection on long press in certain contexts */
+    -webkit-user-select: none;
+    user-select: none;
   }
   /* Headings always set in the display face (Replica) */
   h1,

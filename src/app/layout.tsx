@@ -51,6 +51,11 @@ export const metadata: Metadata = {
   },
   description:
     "SIERRA is a fully vertical textile manufacturer: integrated capabilities, nearshore speed, and full traceability from fiber to finished product.",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    viewportFit: "cover",
+  },
 };
 
 export default function RootLayout({

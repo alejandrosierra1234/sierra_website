@@ -181,7 +181,19 @@ export function Navbar({
 
       {/* Mobile Menu Modal - OUTSIDE header for proper z-index */}
       {menuOpen && (
-        <div className="fixed inset-0 z-50 flex flex-col lg:hidden bg-white overflow-hidden">
+        <div
+          className="fixed inset-0 z-50 flex flex-col lg:hidden bg-white overflow-hidden"
+          style={{
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            paddingTop: "max(0px, env(safe-area-inset-top))",
+            paddingBottom: "max(0px, env(safe-area-inset-bottom))",
+            paddingLeft: "max(0px, env(safe-area-inset-left))",
+            paddingRight: "max(0px, env(safe-area-inset-right))",
+          }}
+        >
           {/* Header */}
           <div className="flex shrink-0 items-center justify-between border-b border-neutral-100 bg-white px-6 py-4">
             <h2 className="text-lg font-semibold text-ink">Menu</h2>
@@ -195,8 +207,11 @@ export function Navbar({
             </button>
           </div>
 
-          {/* Scrollable Content */}
-          <div className="min-h-0 flex-1 overflow-y-auto">
+          {/* Scrollable Content - uses -webkit-overflow-scrolling for iOS smooth scroll */}
+          <div
+            className="min-h-0 flex-1 overflow-y-auto"
+            style={{ WebkitOverflowScrolling: "touch" }}
+          >
             <MobileMenu items={items} onNavigate={() => setMenuOpen(false)} />
           </div>
 
