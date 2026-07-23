@@ -42,6 +42,8 @@ export function Navbar({
   const [searchOpen, setSearchOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const activeTriggerRef = useRef<HTMLButtonElement | null>(null);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const closeMobileButtonRef = useRef<HTMLButtonElement>(null);
   const navId = useId();
 
   const close = () => setActiveKey(null);
@@ -94,6 +96,49 @@ export function Navbar({
     }
   }, [menuOpen]);
 
+  // The mobile menu modal is only rendered below the `lg` breakpoint
+  // (`lg:hidden`); if the viewport crosses into `lg` while it's open —
+  // window resize, tablet rotation — the modal (and its close button)
+  // disappear from view but menuOpen stays true, leaving body scroll
+  // locked with no visible way to release it. Close it proactively.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const mq = window.matchMedia("(min-width: 1024px)");
+    function onChange(e: MediaQueryListEvent) {
+      if (e.matches) setMenuOpen(false);
+    }
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, [menuOpen]);
+
+  // Focus the mobile menu on open, and trap Tab navigation inside it
+  // (it's a plain overlay, not a native <dialog>, so nothing does this
+  // for free — without it, Tab can walk focus into the page behind it).
+  useEffect(() => {
+    if (!menuOpen) return;
+    closeMobileButtonRef.current?.focus();
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key !== "Tab") return;
+      const container = mobileMenuRef.current;
+      if (!container) return;
+      const focusable = container.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])',
+      );
+      if (focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [menuOpen]);
+
   const activeItem = items.find((item) => item.key === activeKey) ?? null;
 
   return (
@@ -102,7 +147,11 @@ export function Navbar({
         ref={headerRef}
         className={cn(
           "w-full border-b border-neutral-100 bg-paper/80 backdrop-blur-md z-40",
-          sticky && "sticky top-0",
+          // Positioned (relative or sticky) so the absolutely-positioned
+          // mega menu panel below anchors to the header, not some
+          // farther-up ancestor. `sticky` already counts as positioned,
+          // so only add `relative` when sticky is off (e.g. Style Guide demos).
+          sticky ? "sticky top-0" : "relative",
         )}
         onMouseLeave={close}
         onBlur={(e) => {
@@ -125,6 +174,14 @@ export function Navbar({
                     onFocus={(e) => {
                       activeTriggerRef.current = e.currentTarget;
                       setActiveKey(item.key);
+                    }}
+                    onClick={(e) => {
+                      // Hover/focus alone never fire on touch devices at
+                      // the `lg` breakpoint (tablets, touch laptops), so
+                      // without an explicit click handler the mega menu
+                      // is unreachable there. Toggle on click/tap.
+                      activeTriggerRef.current = e.currentTarget;
+                      setActiveKey((k) => (k === item.key ? null : item.key));
                     }}
                     className={cn(
                       "rounded-full px-3 py-2 text-sm font-medium transition-colors duration-150 ease-precise",
@@ -182,6 +239,10 @@ export function Navbar({
       {/* Mobile Menu Modal - OUTSIDE header for proper z-index */}
       {menuOpen && (
         <div
+          ref={mobileMenuRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menu"
           className="fixed inset-0 z-50 flex flex-col lg:hidden bg-white overflow-hidden"
           style={{
             top: 0,
@@ -198,6 +259,7 @@ export function Navbar({
           <div className="flex shrink-0 items-center justify-between border-b border-neutral-100 bg-white px-6 py-4">
             <h2 className="text-lg font-semibold text-ink">Menu</h2>
             <button
+              ref={closeMobileButtonRef}
               type="button"
               onClick={() => setMenuOpen(false)}
               className="rounded-full p-2 text-neutral-600 transition-colors duration-150 active:bg-neutral-100"
