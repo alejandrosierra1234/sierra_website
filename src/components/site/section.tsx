@@ -30,10 +30,10 @@ export function Section({
   children?: React.ReactNode;
 }) {
   return (
-    <section id={id} className={cn("py-16 lg:py-24", tones[tone], className)}>
+    <section id={id} className={cn("py-20 lg:py-32", tones[tone], className)}>
       <div className="container-page">
         {(eyebrow || title || lede) && (
-          <header className="mb-10 max-w-2xl lg:mb-14">
+          <header className="mb-12 max-w-2xl lg:mb-20">
             {eyebrow && <p className="eyebrow">{eyebrow}</p>}
             {title && (
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-balance lg:text-4xl">
