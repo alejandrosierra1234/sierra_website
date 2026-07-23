@@ -142,6 +142,7 @@ export const motionTokens = [
   { token: "duration-200", value: "200ms", use: "Small movement (modals)" },
   { token: "duration-300", value: "300ms", use: "Drawers, panels" },
   { token: "duration-500", value: "500ms", use: "Page-level reveals" },
+  { token: "story-progress", value: "6000ms (linear)", use: "Homepage hero autoplay fill — one segment per slide" },
 ];
 
 export const breakpoints = [

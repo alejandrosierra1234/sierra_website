@@ -11,12 +11,14 @@ export function IndustryCard({
   title,
   description,
   href = "#",
+  ctaLabel = "Explore",
   className,
 }: {
   icon: LucideIcon;
   title: string;
   description: string;
   href?: string;
+  ctaLabel?: string;
   className?: string;
 }) {
   return (
@@ -36,7 +38,7 @@ export function IndustryCard({
         <p className="mt-1.5 text-sm leading-relaxed text-neutral-600">{description}</p>
       </div>
       <span className="inline-flex items-center gap-1.5 text-sm font-medium text-teal-800">
-        Explore
+        {ctaLabel}
         <ArrowRight
           aria-hidden
           className="size-4 transition-transform duration-150 ease-precise group-hover:translate-x-0.5"
